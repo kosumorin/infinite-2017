@@ -4,7 +4,6 @@ import color
 TURNING_POWER = 500
 DEFAULT_POWER = 250
 
-
 class Movement(object):
     def __init__(self):
         self.left_color_sensor = ColorSensor('in4')
@@ -52,7 +51,6 @@ class Movement(object):
 
         if left_color == color.BROWN or right_color == color.BROWN:
             movement_callback_obj.on_brown(self, left_color == color.BROWN, right_color == color.BROWN)
-
 
 class MovementCallback(object):
     def on_black(self, movement_obj: 'Movement', left: bool, right: bool):

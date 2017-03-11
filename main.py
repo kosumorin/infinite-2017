@@ -54,12 +54,12 @@ class CCLMovementCallback(BaseMovementCallback):
             movement_obj.right_movement()
 
 if __name__ == "__main__":
-    robot = Movement()
+    movement = Movement()
 
     while True:
         if current_line == line.EWL:
-            robot.step(EWLMovementCallback)
+            movement.step(EWLMovementCallback())
         elif current_line == line.NSL:
-            robot.step(NSLMovementCallback)
+            movement.step(NSLMovementCallback())
         elif current_line == line.CCL:
-            robot.step(CCLMovementCallback)
+            movement.step(CCLMovementCallback())
