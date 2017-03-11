@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-from movement import Movement, MovementCallback
+from movement import Movement, MovementListener
 import line
 
 # Change line here!
 current_line = line.EWL
 
-class BaseMovementCallback(MovementCallback):
+class BaseMovementListener(MovementListener):
     # TODO: STATIONS
     def on_black(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
@@ -32,21 +32,21 @@ class BaseMovementCallback(MovementCallback):
     def on_brown(self, movement_obj: 'Movement', left: bool, right: bool):
         movement_obj.stop_movement()
 
-class EWLMovementCallback(BaseMovementCallback):
+class EWLMovementListener(BaseMovementListener):
     def on_green(self, movement_obj: 'Movement', left: bool, right: bool):
         if left:
             movement_obj.left_movement()
         elif right:
             movement_obj.right_movement()
 
-class NSLMovementCallback(BaseMovementCallback):
+class NSLMovementListener(BaseMovementListener):
     def on_red(self, movement_obj: 'Movement', left: bool, right: bool):
         if left:
             movement_obj.left_movement()
         if right:
             movement_obj.right_movement()
 
-class CCLMovementCallback(BaseMovementCallback):
+class CCLMovementListener(BaseMovementListener):
     def on_yellow(self, movement_obj: 'Movement', left: bool, right: bool):
         if left:
             movement_obj.left_movement()
@@ -58,8 +58,8 @@ if __name__ == "__main__":
 
     while True:
         if current_line == line.EWL:
-            movement.step(EWLMovementCallback())
+            movement.step(EWLMovementListener())
         elif current_line == line.NSL:
-            movement.step(NSLMovementCallback())
+            movement.step(NSLMovementListener())
         elif current_line == line.CCL:
-            movement.step(CCLMovementCallback())
+            movement.step(CCLMovementListener())
