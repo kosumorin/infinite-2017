@@ -28,7 +28,7 @@ class Movement(object):
         self.left_large_motor.stop()
         self.right_large_motor.stop()
 
-    def step(self, movement_callback_obj: MovementCallback):
+    def step(self, movement_callback_obj: 'MovementCallback'):
         left_color = self.left_color_sensor.color
         right_color = self.right_color_sensor.color
 
@@ -55,23 +55,23 @@ class Movement(object):
 
 
 class MovementCallback(object):
-    def on_black(self, movement_obj: Movement, left: bool, right: bool):
+    def on_black(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
 
-    def on_blue(self, movement_obj: Movement, left: bool, right: bool):
+    def on_blue(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
 
-    def on_green(self, movement_obj: Movement, left: bool, right: bool):
+    def on_green(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
 
-    def on_yellow(self, movement_obj: Movement, left: bool, right: bool):
+    def on_yellow(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
 
-    def on_red(self, movement_obj: Movement, left: bool, right: bool):
+    def on_red(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
 
-    def on_white(self, movement_obj: Movement, left: bool, right: bool):
+    def on_white(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
 
-    def on_brown(self, movement_obj: Movement, left: bool, right: bool):
+    def on_brown(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
