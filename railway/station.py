@@ -70,3 +70,20 @@ TANAH_MERAH.EWL_station_path    = StationPath(  up=CHANGI,        left=PASIR_RIS
 CHANGI.EWL_station_path         = StationPath(                                                                    down=TANAH_MERAH  )
 PASIR_RIS.EWL_station_path      = StationPath(                                                                    down=TANAH_MERAH  )
 
+'''
+    *********************************************************************************
+                            NSL STATION PATHS FOR NSL STATIONS
+    *********************************************************************************
+'''
+JURONG_EAST.NSL_station_path    = StationPath(  up=CHUA_CHU_KANG,                         right=CLEMENTI                              )
+CHUA_CHU_KANG.NSL_station_path  = StationPath(  up=WOODLANDS,                                                     down=JURONG_EAST    )
+WOODLANDS.NSL_station_path      = StationPath(  up=YISHUN,                                                        down=CHUA_CHU_KANG  )
+YISHUN.NSL_station_path         = StationPath(  up=BISHAN,                                                        down=WOODLANDS      )
+BISHAN.NSL_station_path         = StationPath(  up=TOA_PAYOH,     left=SERANGOON,         right=BOTANIC_GARDENS,  down=YISHUN         )
+TOA_PAYOH.NSL_station_path      = StationPath(  up=NEWTON,                                                        down=BISHAN         )
+NEWTON.NSL_station_path         = StationPath(  up=ORCHARD,                                                       down=TOA_PAYOH      )
+ORCHARD.NSL_station_path        = StationPath(  up=SOMERSET,                                                      down=NEWTON         )
+SOMERSET.NSL_station_path       = StationPath(  up=DHOBY_GHAUT,                                                   down=ORCHARD        )
+DHOBY_GHAUT.NSL_station_path    = StationPath(  up=CITY_HALL,     left=ESPLANADE,                                 down=SOMERSET       )
+CITY_HALL.NSL_station_path      = StationPath(  up=MARINA_BAY,    left=BUGIS,             right=OUTRAM_PARK,      down=DHOBY_GHAUT    )
+MARINA_BAY.NSL_station_path     = StationPath(                    left=PROMENADE,                                 down=CITY_HALL      )
