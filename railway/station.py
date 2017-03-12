@@ -87,3 +87,23 @@ SOMERSET.NSL_station_path       = StationPath(  up=DHOBY_GHAUT,                 
 DHOBY_GHAUT.NSL_station_path    = StationPath(  up=CITY_HALL,     left=ESPLANADE,                                 down=SOMERSET       )
 CITY_HALL.NSL_station_path      = StationPath(  up=MARINA_BAY,    left=BUGIS,             right=OUTRAM_PARK,      down=DHOBY_GHAUT    )
 MARINA_BAY.NSL_station_path     = StationPath(                    left=PROMENADE,                                 down=CITY_HALL      )
+
+'''
+    *********************************************************************************
+                            CCL STATION PATHS FOR CCL STATIONS
+    *********************************************************************************
+'''
+HABOURFRONT.CCL_station_path        = StationPath(  up=HAW_PAR_VILLA                                                                        )
+HAW_PAR_VILLA.CCL_station_path      = StationPath(  up=BUONA_VISTA,                                                   down=HABOURFRONT      )
+BUONA_VISTA.CCL_station_path        = StationPath(  up=HOLLAND_VILLAGE,     left=CLEMENTI,    right=OUTRAM_PARK,      down=HABOURFRONT      )
+HOLLAND_VILLAGE.CCL_station_path    = StationPath(  up=BOTANIC_GARDENS,                                               down=BUONA_VISTA      )
+BOTANIC_GARDENS.CCL_station_path    = StationPath(  up=BISHAN,                                                        down=HOLLAND_VILLAGE  )
+BISHAN.CCL_station_path             = StationPath(  up=SERANGOON,           left=YISHUN,      right=TOA_PAYOH,        down=BOTANIC_GARDENS  )
+SERANGOON.CCL_station_path          = StationPath(  up=PAYA_LEBAR,                                                    down=BISHAN           )
+PAYA_LEBAR.CCL_station_path         = StationPath(  up=STADIUM,             left=BEDOK,       right=KALLANG,          down=SERANGOON        )
+STADIUM.CCL_station_path            = StationPath(  up=PROMENADE,                                                     down=PAYA_LEBAR       )
+PROMENADE.CCL_station_path          = StationPath(  up=MARINA_BAY,          left=ESPLANADE,                           down=STADIUM          )
+ESPLANADE.CCL_station_path          = StationPath(  up=DHOBY_GHAUT,                                                   down=PROMENADE        )
+DHOBY_GHAUT.CCL_station_path        = StationPath(                                                                    down=ESPLANADE        )
+MARINA_BAY.CCL_station_path         = StationPath(                                                                    down=PROMENADE        )
+
