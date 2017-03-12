@@ -35,7 +35,7 @@ JURONG_EAST     = Station("Jurong East",        EWL_id=1,   NSL_id=1            
 MARINA_BAY      = Station("Marina Bay",                     NSL_id=12,  CCL_id=11   )
 DHOBY_GHAUT     = Station("Marina Bay",                     NSL_id=10,  CCL_id=10.2 )
 SOMERSET        = Station("Somerset",                       NSL_id=9                )
-ORCAHRD         = Station("Orchard",                        NSL_id=8                )
+ORCHARD         = Station("Orchard",                        NSL_id=8                )
 NEWTON          = Station("Newton",                         NSL_id=7                )
 TOA_PAYOH       = Station("Toa Payoh",                      NSL_id=6                )
 BISHAN          = Station("Bishan",                         NSL_id=5,   CCL_id=6    )
