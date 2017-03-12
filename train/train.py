@@ -1,10 +1,10 @@
 from ev3dev.ev3 import ColorSensor, LargeMotor
-import color
+from utils import color
 
 TURNING_POWER = 500
 DEFAULT_POWER = 250
 
-class Movement(object):
+class Train(object):
     def __init__(self):
         self.left_color_sensor = ColorSensor('in4')
         self.right_color_sensor = ColorSensor('in1')
@@ -52,7 +52,7 @@ class Movement(object):
         if left_color == color.BROWN or right_color == color.BROWN:
             movement_listener_obj.on_brown(self, left_color == color.BROWN, right_color == color.BROWN)
 
-class MovementListener(object):
+class TrainListener(object):
     def on_black(self, movement_obj: 'Movement', left: bool, right: bool):
         pass
 

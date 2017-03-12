@@ -1,4 +1,4 @@
-import color
+from utils import color
 
 EWL = 100
 NSL = 200

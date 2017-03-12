@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from movement import Movement, MovementListener
-import line
+from railway import line
+from train.train import Movement, MovementListener
 
 # Change line here!
 current_line = line.EWL
