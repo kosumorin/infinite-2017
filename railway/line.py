@@ -1,52 +1,12 @@
-from utils import color
+from utils.color import *
+from railway.station import *
+from typing import List
 
-EWL = 100
-NSL = 200
-CCL = 300
+class Line(object):
+    def __init__(self, color: int, stations: 'List[Station]'):
+        self.color = color
+        self.stations = stations
 
-EWL_COLOR = color.GREEN
-NSL_COLOR = color.RED
-CCL_COLOR = color.YELLOW
-
-EWL_STATIONS = [
-    "Jurong East",
-    "Clementi",
-    "Buona Vista",
-    "Outram Park",
-    "City Hall",
-    "Bugis",
-    "Kallang",
-    "Paya Lebar",
-    "Bedok",
-    "Tanah Merah",
-    "Changi",
-]
-
-NSL_STATIONS = [
-    "Jurong East",
-    "Chua Chu Kang",
-    "Woodlands",
-    "Yishun",
-    "Bishan",
-    "Toa Payoh",
-    "Newton",
-    "Orchard",
-    "Somerset",
-    "Dhoby Ghaut",
-    "City Hall",
-    "Marina Bay"
-]
-
-CCL_STATIONS = [
-    "Habourfront",
-    "Haw Par Villa",
-    "Buona Vista",
-    "Holland Village",
-    "Botanic Gardens",
-    "Bishan",
-    "Serangoon",
-    "Paya Lebar",
-    "Stadium",
-    "Esplanade",
-    "Dhoby Ghaut"
-]
+EWL_Line = Line(color=GREEN, stations=EWL_STATIONS)
+NSL_Line = Line(color=RED, stations=NSL_STATIONS)
+CCL_Line = Line(color=YELLOW, stations=CCL_STATIONS)
