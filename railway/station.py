@@ -57,15 +57,16 @@ HABOURFRONT     = Station("Habourfront",                                CCL_id=1
                             EWL STATION PATHS FOR EWL STATIONS
     *********************************************************************************
 '''
-PASIR_RIS.EWL_station_path      = StationPath(                                                                  down=TANAH_MERAH)
-CHANGI.EWL_station_path         = StationPath(                                                                  down=TANAH_MERAH)
-TANAH_MERAH.EWL_station_path    = StationPath(up=CHANGI,        left=PASIR_RIS,                                 down=BEDOK      )
-BEDOK.EWL_station_path          = StationPath(up=TANAH_MERAH,                                                   down=PAYA_LEBAR )
-PAYA_LEBAR.EWL_station_path     = StationPath(up=BEDOK,         left=SERANGOON,         right=STADIUM,          down=KALLANG    )
-KALLANG.EWL_station_path        = StationPath(up=PAYA_LEBAR,                                                    down=BUGIS      )
-BUGIS.EWL_station_path          = StationPath(up=KALLANG,                                                       down=CITY_HALL  )
-CITY_HALL.EWL_station_path      = StationPath(up=BUGIS,         left=DHOBY_GHAUT,       right=MARINA_BAY,       down=OUTRAM_PARK)
-OUTRAM_PARK.EWL_station_path    = StationPath(up=CITY_HALL,                                                     down=BUONA_VISTA)
-BUONA_VISTA.EWL_station_path    = StationPath(up=OUTRAM_PARK,   left=HOLLAND_VILLAGE,   right=HAW_PAR_VILLA,    down=CLEMENTI   )
+JURONG_EAST.EWL_station_path    = StationPath(up=CLEMENTI,      left=CHUA_CHU_KANG                                              )
 CLEMENTI.EWL_station_path       = StationPath(up=BUONA_VISTA,                                                   down=JURONG_EAST)
-JURONG_EAST.EWL_station_path    = StationPath(up=CLEMENTI,      left=CHUA_CHU_KANG,                                             )
+BUONA_VISTA.EWL_station_path    = StationPath(up=OUTRAM_PARK,   left=HOLLAND_VILLAGE,   right=HAW_PAR_VILLA,    down=CLEMENTI   )
+OUTRAM_PARK.EWL_station_path    = StationPath(up=CITY_HALL,                                                     down=BUONA_VISTA)
+CITY_HALL.EWL_station_path      = StationPath(up=BUGIS,         left=DHOBY_GHAUT,       right=MARINA_BAY,       down=OUTRAM_PARK)
+BUGIS.EWL_station_path          = StationPath(up=KALLANG,                                                       down=CITY_HALL  )
+KALLANG.EWL_station_path        = StationPath(up=PAYA_LEBAR,                                                    down=BUGIS      )
+PAYA_LEBAR.EWL_station_path     = StationPath(up=BEDOK,         left=SERANGOON,         right=STADIUM,          down=KALLANG    )
+BEDOK.EWL_station_path          = StationPath(up=TANAH_MERAH,                                                   down=PAYA_LEBAR )
+TANAH_MERAH.EWL_station_path    = StationPath(up=CHANGI,        left=PASIR_RIS,                                 down=BEDOK      )
+CHANGI.EWL_station_path         = StationPath(                                                                  down=TANAH_MERAH)
+PASIR_RIS.EWL_station_path      = StationPath(                                                                  down=TANAH_MERAH)
+
