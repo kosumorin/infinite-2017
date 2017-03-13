@@ -1,6 +1,7 @@
-from utils.color import *
-from railway.station import *
+import utils.color as color
+import railway.station as station
 from typing import List
+from railway.station import Station
 
 class Line(object):
     def __init__(self, color: int, stations: 'List[Station]'):
