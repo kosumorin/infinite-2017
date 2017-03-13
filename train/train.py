@@ -1,5 +1,5 @@
-from ev3dev.ev3 import ColorSensor, LargeMotor
-from utils.color import Color
+from ev3dev.ev3 import ColorSensor, LargeMotor, TouchSensor
+from utils import color
 
 TURNING_POWER = 500
 DEFAULT_POWER = 250
@@ -10,7 +10,9 @@ class Train(object):
         self.right_color_sensor = ColorSensor('in1')
         self.left_large_motor = LargeMotor('outD')
         self.right_large_motor = LargeMotor('outA')
+        self.touch_sensor = TouchSensor('in3')
         self.listener = None
+        self.prev_is_pressed = False
 
     def move_forward(self):
         self.left_large_motor.run_forever(speed_sp=DEFAULT_POWER)
@@ -60,6 +62,11 @@ class Train(object):
         if left_color == Color.BROWN or right_color == Color.BROWN:
             self.listener.on_brown(self, left_color == Color.BROWN, right_color == Color.BROWN)
 
+        if self.prev_is_pressed and not self.touch_sensor.is_pressed():
+            self.listener.on_click(self)
+        else:
+            self.prev_is_pressed = self.touch_sensor.is_pressed()
+
 class TrainListener(object):
     def on_black(self, train: 'Train', left: bool, right: bool):
         pass
@@ -80,4 +87,7 @@ class TrainListener(object):
         pass
 
     def on_brown(self, train: 'Train', left: bool, right: bool):
+        pass
+
+    def on_click(self, train: 'Train'):
         pass
