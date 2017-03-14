@@ -62,10 +62,10 @@ class Train(object):
         if left_color == Color.BROWN or right_color == Color.BROWN:
             self.listener.on_brown(self, left_color == Color.BROWN, right_color == Color.BROWN)
 
-        if self.prev_is_pressed and not self.touch_sensor.is_pressed():
+        if self.prev_is_pressed and not self.touch_sensor.is_pressed:
             self.listener.on_click(self)
-        else:
-            self.prev_is_pressed = self.touch_sensor.is_pressed()
+
+        self.prev_is_pressed = self.touch_sensor.is_pressed
 
 class TrainListener(object):
     def on_black(self, train: 'Train', left: bool, right: bool):
