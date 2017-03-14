@@ -1,5 +1,5 @@
 from ev3dev.ev3 import ColorSensor, LargeMotor
-from utils import color
+from utils.color import Color
 
 TURNING_POWER = 500
 DEFAULT_POWER = 250
@@ -39,26 +39,26 @@ class Train(object):
         left_color = self.left_color_sensor.color
         right_color = self.right_color_sensor.color
 
-        if left_color == color.BLACK or right_color == color.BLACK:
-            self.listener.on_black(self, left_color == color.BLACK, right_color == color.BLACK)
+        if left_color == Color.BLACK or right_color == Color.BLACK:
+            self.listener.on_black(self, left_color == Color.BLACK, right_color == Color.BLACK)
 
-        if left_color == color.BLUE or right_color == color.BLUE:
-            self.listener.on_blue(self, left_color == color.BLUE, right_color == color.BLUE)
+        if left_color == Color.BLUE or right_color == Color.BLUE:
+            self.listener.on_blue(self, left_color == Color.BLUE, right_color == Color.BLUE)
 
-        if left_color == color.GREEN or right_color == color.GREEN:
-            self.listener.on_green(self, left_color == color.GREEN, right_color == color.GREEN)
+        if left_color == Color.GREEN or right_color == Color.GREEN:
+            self.listener.on_green(self, left_color == Color.GREEN, right_color == Color.GREEN)
 
-        if left_color == color.YELLOW or right_color == color.YELLOW:
-            self.listener.on_yellow(self, left_color == color.YELLOW, right_color == color.YELLOW)
+        if left_color == Color.YELLOW or right_color == Color.YELLOW:
+            self.listener.on_yellow(self, left_color == Color.YELLOW, right_color == Color.YELLOW)
 
-        if left_color == color.RED or right_color == color.RED:
-            self.listener.on_red(self, left_color == color.RED, right_color == color.RED)
+        if left_color == Color.RED or right_color == Color.RED:
+            self.listener.on_red(self, left_color == Color.RED, right_color == Color.RED)
 
-        if left_color == color.WHITE or right_color == color.WHITE:
-            self.listener.on_white(self, left_color == color.WHITE, right_color == color.WHITE)
+        if left_color == Color.WHITE or right_color == Color.WHITE:
+            self.listener.on_white(self, left_color == Color.WHITE, right_color == Color.WHITE)
 
-        if left_color == color.BROWN or right_color == color.BROWN:
-            self.listener.on_brown(self, left_color == color.BROWN, right_color == color.BROWN)
+        if left_color == Color.BROWN or right_color == Color.BROWN:
+            self.listener.on_brown(self, left_color == Color.BROWN, right_color == Color.BROWN)
 
 class TrainListener(object):
     def on_black(self, train: 'Train', left: bool, right: bool):
