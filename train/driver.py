@@ -1,4 +1,16 @@
+from railway.station import Station
+from railway.line import Line
 from train.train import Train, TrainListener
+
+class DriverListener(object):
+    def on_station_reached(self, station: 'Station', line: 'Line'):
+        pass
+
+    def on_line_change(self, station: 'Station', curr_line: 'Line', target_line: 'Line'):
+        pass
+
+    def on_end_station_reached(self, station: 'Station', line: 'Line'):
+        pass
 
 class BaseDriver(TrainListener):
     def on_black(self, train: 'Train', left: bool, right: bool):
