@@ -45,8 +45,20 @@ git clone https://github.com/zzereen/infinite-2017.git
 
 ## Run the project
 
-On the EV3 brick:
+### On the computer connected to the EV3 through SSH (in the project directory):
 
 ```bash
 python3 main.py
 ```
+
+OR
+
+```bash
+./run.sh
+```
+
+### On the EV3:
+
+1. Go to file browser
+2. Navigate to the project folder
+3. Click on ```run.sh```
