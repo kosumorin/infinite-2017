@@ -1,7 +1,5 @@
 # Infinite 2017
 
-## About
-
 This project uses the EV3 brick, motors and color sensors to move along the lines of Singapore's MRT railway system.
 
 This project features 3 railway lines known as the East West Line (EWL), North South Line (NSL) and Circle Line (CCL). They are also known as green line, red line and yellow line respectively.
@@ -45,8 +43,16 @@ git clone https://github.com/zzereen/infinite-2017.git
 
 ## Run the project
 
-On the EV3 brick:
+On the computer connected to the EV3 via SSH (in the project directory):
 
 ```bash
-python3 main.py
+./run.sh
 ```
+
+**or**
+
+On the EV3:
+
+1. Go to 'File Browser'
+2. Navigate to the project folder
+3. Click on ```run.sh```
