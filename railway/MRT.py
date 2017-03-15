@@ -92,7 +92,7 @@ class MRTStation(object):
 
 
 class MRTLine(object):
-    EWL = Line(color=Color.GREEN, stations=[
+    EWL = Line(name="East West Line", color=Color.GREEN, stations=[
         MRTStation.JURONG_EAST,
         MRTStation.CLEMENTI,
         MRTStation.BUONA_VISTA,
@@ -107,7 +107,7 @@ class MRTLine(object):
         MRTStation.CHANGI
     ])
 
-    NSL = Line(color=Color.RED, stations=[
+    NSL = Line(name="North South Line", color=Color.RED, stations=[
         MRTStation.JURONG_EAST,
         MRTStation.CHUA_CHU_KANG,
         MRTStation.WOODLANDS,
@@ -122,7 +122,7 @@ class MRTLine(object):
         MRTStation.MARINA_BAY
     ])
 
-    CCL = Line(color=Color.YELLOW, stations=[
+    CCL = Line(name="Circle Line", color=Color.YELLOW, stations=[
         MRTStation.HABOURFRONT,
         MRTStation.HAW_PAR_VILLA,
         MRTStation.BUONA_VISTA,
