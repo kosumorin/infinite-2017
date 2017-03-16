@@ -11,6 +11,7 @@ class Route(object):
         self.transfer_station = transfer_station
         self.transfer_turn_direction = None
         self.path = []
+        self.generate_path()
 
     def generate_path(self):
         if self.start_line != self.end_line:
