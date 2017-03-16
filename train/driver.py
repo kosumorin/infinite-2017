@@ -16,29 +16,33 @@ class MRTDriver(TrainListener):
         train.stop()
 
     def on_green(self, train: 'Train', left: bool, right: bool):
-        if self.current_MRT_line == MRTLine.EWL:
-            if left:
-                train.steer_left()
-            elif right:
-                train.steer_right()
+        if self.route.path != 0:
+            if self.current_MRT_line == MRTLine.EWL:
+                if left:
+                    train.steer_left()
+                elif right:
+                    train.steer_right()
 
     def on_yellow(self, train: 'Train', left: bool, right: bool):
-        if self.current_MRT_line == MRTLine.CCL:
-            if left:
-                train.steer_left()
-            elif right:
-                train.steer_right()
+        if self.route.path != 0:
+            if self.current_MRT_line == MRTLine.CCL:
+                if left:
+                    train.steer_left()
+                elif right:
+                    train.steer_right()
 
     def on_red(self, train: 'Train', left: bool, right: bool):
-        if self.current_MRT_line == MRTLine.NSL:
-            if left:
-                train.steer_left()
-            elif right:
-                train.steer_right()
+        if self.route.path != 0:
+            if self.current_MRT_line == MRTLine.NSL:
+                if left:
+                    train.steer_left()
+                elif right:
+                    train.steer_right()
 
     def on_white(self, train: 'Train', left: bool, right: bool):
-        if left and right:
-            train.move_forward()
+        if self.route.path != 0:
+            if left and right:
+                train.move_forward()
 
     def on_brown(self, train: 'Train', left: bool, right: bool):
         train.stop()
