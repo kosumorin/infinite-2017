@@ -32,12 +32,12 @@ class Train(object):
         self.right_large_motor.run_forever(speed_sp=DEFAULT_POWER)
 
     def turn_left(self):
-        self.left_large_motor.run_forever(speed_sp=TURNING_POWER)
-        self.right_large_motor.run_forever(speed_sp=-TURNING_POWER)
+        self.left_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=1000)
+        self.right_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=1000)
 
     def turn_right(self):
-        self.left_large_motor.run_forever(speed_sp=-TURNING_POWER)
-        self.right_large_motor.run_forever(speed_sp=TURNING_POWER)
+        self.left_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=1000)
+        self.right_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=1000)
 
     def stop(self):
         self.left_large_motor.stop()
