@@ -1,14 +1,14 @@
-from enum import IntEnum, auto
+from enum import IntEnum
 
 class TurnDirection(IntEnum):
-    LEFT = auto()
-    RIGHT = auto()
+    LEFT = 0
+    RIGHT = 1
 
 class Direction(IntEnum):
-    NORTH = auto()
-    EAST = auto()
-    SOUTH = auto()
-    WEST = auto()
+    NORTH = 0
+    EAST = 1
+    SOUTH = 2
+    WEST = 3
 
     @classmethod
     def get_turn_direction(cls, from_dir: 'Direction', to_dir: 'Direction') -> 'TurnDirection':
@@ -46,5 +46,5 @@ class Direction(IntEnum):
 
 
 class TrainDirection(IntEnum):
-    TOWARDS = auto()
-    OPPOSITE = auto()
+    TOWARDS = 0
+    OPPOSITE = 1

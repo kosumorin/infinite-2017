@@ -1,6 +1,6 @@
 from railway.station import Station, MRTStation
 from railway.line import Line, MRTLine
-from utils.direction import TrainDirection, TurnDirection, Direction
+from utils.direction import TrainDirection, Direction
 
 class Route(object):
     def __init__(self, start_station: 'Station', end_station: 'Station', start_line: 'Line', end_line: 'Line', transfer_station: 'Station' = None):
@@ -9,7 +9,7 @@ class Route(object):
         self.start_line = start_line
         self.end_line = end_line
         self.transfer_station = transfer_station
-        self.transfer_turn_direction: 'TurnDirection' = None
+        self.transfer_turn_direction = None
         self.path = []
 
     def generate_path(self):

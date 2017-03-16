@@ -1,10 +1,7 @@
-from typing import Dict
-from utils.direction import Direction
-
 class Station(object):
     def __init__(self, name: str):
         self.name = name
-        self.line_flow: 'Dict[Line, Direction]' = {}
+        self.line_flow = {}
 
 class MRTStation(object):
     CHANGI = Station("Changi")

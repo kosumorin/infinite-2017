@@ -1,6 +1,5 @@
 from utils.color import Color
 from utils.direction import Direction
-from typing import List
 from railway.station import Station, MRTStation
 
 class Line(object):

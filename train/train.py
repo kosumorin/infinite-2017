@@ -1,5 +1,5 @@
 from ev3dev.ev3 import ColorSensor, LargeMotor, TouchSensor
-from utils import color
+from utils.color import Color
 
 TURNING_POWER = 500
 DEFAULT_POWER = 250
