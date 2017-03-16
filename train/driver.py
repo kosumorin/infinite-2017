@@ -48,7 +48,10 @@ class MRTDriver(TrainListener):
         train.stop()
 
     def on_click(self, train: 'Train'):
-        station = self.route.path.pop(0)
+        if self.route.path == 0:
+            return
+        else:
+            station = self.route.path.pop(0)
 
         for listener in self.listeners:
             listener.on_station_reached(station, self.current_MRT_line)
@@ -59,6 +62,8 @@ class MRTDriver(TrainListener):
             for listener in self.listeners:
                 listener.on_end_station_reached(station, self.current_MRT_line)
 
+            return
+
         if station == self.route.transfer_station:
             if self.route.transfer_turn_direction == TurnDirection.LEFT:
                 train.steer_left()
@@ -66,8 +71,6 @@ class MRTDriver(TrainListener):
                 train.steer_right()
 
             self.current_MRT_line = self.route.end_line
-
-        train.move_forward()
 
     def add_listener(self, listener: 'MRTDriverListener'):
         self.listeners.append(listener)
