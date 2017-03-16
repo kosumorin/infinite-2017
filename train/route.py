@@ -49,13 +49,3 @@ class Route(object):
             return Direction.opposite(station.line_flow[line])
         else:
             return station.line_flow[line]
-
-
-if __name__ == "__main__":
-    route1 = Route(MRTStation.HABOURFRONT, MRTStation.WOODLANDS, MRTLine.CCL, MRTLine.NSL, MRTStation.BISHAN)
-    route1.generate_path()
-    print("Stations: ")
-    for station in route1.path :
-        print(station.name)
-    print("\n\nTransfer at: " + route1.transfer_station.name)
-    print("Turn at: " + str(route1.transfer_turn_direction))
