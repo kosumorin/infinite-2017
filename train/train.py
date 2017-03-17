@@ -2,8 +2,10 @@ from ev3dev.ev3 import ColorSensor, LargeMotor, TouchSensor
 from utils.color import Color
 
 STEERING_POWER = 500
-TURNING_POWER = 1000
+TURNING_POWER = 600
 DEFAULT_POWER = 250
+
+TURNING_MILLISECONDS = 4000
 
 class Train(object):
     def __init__(self):
@@ -32,12 +34,22 @@ class Train(object):
         self.right_large_motor.run_forever(speed_sp=DEFAULT_POWER)
 
     def turn_left(self):
-        self.left_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=1000)
-        self.right_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=1000)
+        self.stop()
+        self.left_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=TURNING_MILLISECONDS)
+        self.right_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=TURNING_MILLISECONDS)
+
+        # Block any calls to the motor while the train is turning
+        self.left_large_motor.wait_while('running')
+        self.right_large_motor.wait_while('running')
 
     def turn_right(self):
-        self.left_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=1000)
-        self.right_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=1000)
+        self.stop()
+        self.left_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=TURNING_MILLISECONDS)
+        self.right_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=TURNING_MILLISECONDS)
+
+        # Block any calls to the motor while the train is turning
+        self.left_large_motor.wait_while('running')
+        self.right_large_motor.wait_while('running')
 
     def stop(self):
         self.left_large_motor.stop()
