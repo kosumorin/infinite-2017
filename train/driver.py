@@ -66,11 +66,13 @@ class MRTDriver(TrainListener):
 
         if station == self.route.transfer_station:
             if self.route.transfer_turn_direction == TurnDirection.LEFT:
-                train.steer_left()
+                train.turn_left()
             elif self.route.transfer_turn_direction == TurnDirection.RIGHT:
-                train.steer_right()
+                train.turn_right()
 
             self.current_MRT_line = self.route.end_line
+
+        train.move_forward()
 
     def add_listener(self, listener: 'MRTDriverListener'):
         self.listeners.append(listener)
