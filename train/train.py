@@ -60,7 +60,7 @@ class Train(object):
                 listener.on_green(self, left_color == Color.GREEN, right_color == Color.GREEN)
 
         if left_color == Color.YELLOW or right_color == Color.YELLOW:
-            for listener in self.listener:
+            for listener in self.listeners:
                 listener.on_yellow(self, left_color == Color.YELLOW, right_color == Color.YELLOW)
 
         if left_color == Color.RED or right_color == Color.RED:
