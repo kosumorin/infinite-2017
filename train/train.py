@@ -36,8 +36,8 @@ class Train(object):
 
     def turn_left(self):
         self.stop()
-        self.left_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=TURNING_MILLISECONDS)
-        self.right_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=TURNING_MILLISECONDS)
+        self.left_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=TURNING_MILLISECONDS)
+        self.right_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=TURNING_MILLISECONDS)
 
         # Block any calls to the motor while the train is turning
         self.left_large_motor.wait_while('running')
@@ -45,8 +45,8 @@ class Train(object):
 
     def turn_right(self):
         self.stop()
-        self.left_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=TURNING_MILLISECONDS)
-        self.right_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=TURNING_MILLISECONDS)
+        self.left_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=TURNING_MILLISECONDS)
+        self.right_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=TURNING_MILLISECONDS)
 
         # Block any calls to the motor while the train is turning
         self.left_large_motor.wait_while('running')
