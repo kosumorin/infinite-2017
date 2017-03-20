@@ -9,11 +9,23 @@ class MRTDriver(TrainListener):
         self.current_MRT_line = route.start_line
         self.listeners = []
 
+    def on_invalid(self, train: 'Train', left: bool, right: bool):
+        if len(self.route.path) != 0:
+            train.move_forward()
+        else:
+            train.stop()
+
     def on_black(self, train: 'Train', left: bool, right: bool):
-        train.stop()
+        if len(self.route.path) != 0:
+            train.move_forward()
+        else:
+            train.stop()
 
     def on_blue(self, train: 'Train', left: bool, right: bool):
-        train.stop()
+        if len(self.route.path) != 0:
+            train.move_forward()
+        else:
+            train.stop()
 
     def on_green(self, train: 'Train', left: bool, right: bool):
         if len(self.route.path) != 0:
@@ -45,7 +57,10 @@ class MRTDriver(TrainListener):
                 train.move_forward()
 
     def on_brown(self, train: 'Train', left: bool, right: bool):
-        train.stop()
+        if len(self.route.path) != 0:
+            train.move_forward()
+        else:
+            train.stop()
 
     def on_click(self, train: 'Train'):
         if len(self.route.path) != 0:
