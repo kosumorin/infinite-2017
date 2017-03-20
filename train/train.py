@@ -59,6 +59,10 @@ class Train(object):
         left_color = self.left_color_sensor.color
         right_color = self.right_color_sensor.color
 
+        if left_color == Color.INVALID or right_color == Color.INVALID:
+            for listener in self.listeners:
+                listener.on_invalid(self, left_color == Color.INVALID, right_color == Color.INVALID)
+
         if left_color == Color.BLACK or right_color == Color.BLACK:
             for listener in self.listeners:
                 listener.on_black(self, left_color == Color.BLACK, right_color == Color.BLACK)
@@ -97,6 +101,9 @@ class Train(object):
         self.listeners.append(listener)
 
 class TrainListener(object):
+    def on_invalid(self, train: 'Train', left: bool, right: bool):
+        pass
+
     def on_black(self, train: 'Train', left: bool, right: bool):
         pass
 
