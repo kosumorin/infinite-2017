@@ -1,6 +1,7 @@
 from enum import IntEnum
 
 class Color(IntEnum):
+    INVALID = 0
     BLACK = 1
     BLUE = 2
     GREEN = 3
