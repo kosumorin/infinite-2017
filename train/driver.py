@@ -34,6 +34,8 @@ class MRTDriver(TrainListener):
                     train.steer_left()
                 elif right:
                     train.steer_right()
+        else:
+            train.stop()
 
     def on_yellow(self, train: 'Train', left: bool, right: bool):
         if len(self.route.path) != 0:
@@ -42,6 +44,8 @@ class MRTDriver(TrainListener):
                     train.steer_left()
                 elif right:
                     train.steer_right()
+        else:
+            train.stop()
 
     def on_red(self, train: 'Train', left: bool, right: bool):
         if len(self.route.path) != 0:
@@ -50,6 +54,8 @@ class MRTDriver(TrainListener):
                     train.steer_left()
                 elif right:
                     train.steer_right()
+        else:
+            train.stop()
 
     def on_white(self, train: 'Train', left: bool, right: bool):
         if len(self.route.path) != 0:
