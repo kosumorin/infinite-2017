@@ -1,7 +1,8 @@
 from ev3dev.ev3 import ColorSensor, LargeMotor, TouchSensor
 from utils.color import Color
 
-STEERING_POWER = 500
+STEERING_POWER = 700
+NON_STEERING_POWER = 150
 TURNING_POWER = 600
 DEFAULT_POWER = 250
 
@@ -26,12 +27,12 @@ class Train(object):
         self.right_large_motor.run_forever(speed_sp=-DEFAULT_POWER)
 
     def steer_left(self):
-        self.left_large_motor.run_forever(speed_sp=DEFAULT_POWER)
+        self.left_large_motor.run_forever(speed_sp=NON_STEERING_POWER)
         self.right_large_motor.run_forever(speed_sp=STEERING_POWER)
 
     def steer_right(self):
         self.left_large_motor.run_forever(speed_sp=STEERING_POWER)
-        self.right_large_motor.run_forever(speed_sp=DEFAULT_POWER)
+        self.right_large_motor.run_forever(speed_sp=NON_STEERING_POWER)
 
     def turn_left(self):
         self.stop()
