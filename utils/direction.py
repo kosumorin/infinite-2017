@@ -1,8 +1,9 @@
 from enum import IntEnum
 
-class TurnDirection(IntEnum):
-    LEFT = 0
-    RIGHT = 1
+class MovementDirection(IntEnum):
+    STRAIGHT = 0
+    LEFT = 1
+    RIGHT = 2
 
 class Direction(IntEnum):
     NORTH = 0
@@ -11,27 +12,27 @@ class Direction(IntEnum):
     WEST = 3
 
     @classmethod
-    def get_turn_direction(cls, from_dir: 'Direction', to_dir: 'Direction') -> 'TurnDirection':
+    def get_move_direction(cls, from_dir: 'Direction', to_dir: 'Direction') -> 'MovementDirection':
         if from_dir == cls.NORTH:
             if to_dir == cls.EAST:
-                return TurnDirection.RIGHT
+                return MovementDirection.RIGHT
             elif to_dir == cls.WEST:
-                return TurnDirection.LEFT
+                return MovementDirection.LEFT
         elif from_dir == cls.EAST:
             if to_dir == cls.SOUTH:
-                return TurnDirection.RIGHT
+                return MovementDirection.RIGHT
             elif to_dir == cls.NORTH:
-                return TurnDirection.LEFT
+                return MovementDirection.LEFT
         elif from_dir == cls.SOUTH:
             if to_dir == cls.WEST:
-                return TurnDirection.RIGHT
+                return MovementDirection.RIGHT
             elif to_dir == cls.EAST:
-                return TurnDirection.LEFT
+                return MovementDirection.LEFT
         elif from_dir == cls.WEST:
             if to_dir == cls.NORTH:
-                return TurnDirection.RIGHT
+                return MovementDirection.RIGHT
             elif to_dir == cls.SOUTH:
-                return TurnDirection.LEFT
+                return MovementDirection.LEFT
 
     @classmethod
     def opposite(cls, dir: 'Direction') -> 'Direction':

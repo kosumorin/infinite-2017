@@ -1,7 +1,7 @@
 from railway.station import Station
 from railway.line import Line, MRTLine
 from vehicle.robot import Robot, RobotListener
-from utils.direction import TurnDirection
+from utils.direction import MovementDirection
 
 class Driver(RobotListener):
     def __init__(self):
@@ -129,9 +129,9 @@ class Driver(RobotListener):
                 listener.on_end_station_reached(station, self.current_MRT_line)
 
         elif station == self.route.transfer_station:
-            if self.route.transfer_turn_direction == TurnDirection.LEFT:
+            if self.route.transfer_turn_direction == MovementDirection.LEFT:
                 train.turn_left()
-            elif self.route.transfer_turn_direction == TurnDirection.RIGHT:
+            elif self.route.transfer_turn_direction == MovementDirection.RIGHT:
                 train.turn_right()
 
             self.current_MRT_line = self.route.end_line
