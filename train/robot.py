@@ -8,7 +8,7 @@ DEFAULT_POWER = 250
 
 TURNING_MILLISECONDS = 375
 
-class Train(object):
+class Robot(object):
     def __init__(self):
         self.left_color_sensor = ColorSensor('in4')
         self.right_color_sensor = ColorSensor('in1')
@@ -98,33 +98,33 @@ class Train(object):
 
         self.prev_is_pressed = self.touch_sensor.is_pressed
 
-    def add_listener(self, listener: 'TrainListener'):
+    def add_listener(self, listener: 'RobotListener'):
         self.listeners.append(listener)
 
-class TrainListener(object):
-    def on_invalid(self, train: 'Train', left: bool, right: bool):
+class RobotListener(object):
+    def on_invalid(self, train: 'Robot', left: bool, right: bool):
         pass
 
-    def on_black(self, train: 'Train', left: bool, right: bool):
+    def on_black(self, train: 'Robot', left: bool, right: bool):
         pass
 
-    def on_blue(self, train: 'Train', left: bool, right: bool):
+    def on_blue(self, train: 'Robot', left: bool, right: bool):
         pass
 
-    def on_green(self, train: 'Train', left: bool, right: bool):
+    def on_green(self, train: 'Robot', left: bool, right: bool):
         pass
 
-    def on_yellow(self, train: 'Train', left: bool, right: bool):
+    def on_yellow(self, train: 'Robot', left: bool, right: bool):
         pass
 
-    def on_red(self, train: 'Train', left: bool, right: bool):
+    def on_red(self, train: 'Robot', left: bool, right: bool):
         pass
 
-    def on_white(self, train: 'Train', left: bool, right: bool):
+    def on_white(self, train: 'Robot', left: bool, right: bool):
         pass
 
-    def on_brown(self, train: 'Train', left: bool, right: bool):
+    def on_brown(self, train: 'Robot', left: bool, right: bool):
         pass
 
-    def on_click(self, train: 'Train'):
+    def on_click(self, train: 'Robot'):
         pass
