@@ -1,6 +1,6 @@
 from railway.station import Station
 from railway.line import Line, MRTLine
-from train.robot import Robot, RobotListener
+from vehicle.robot import Robot, RobotListener
 from utils.direction import TurnDirection
 
 class Driver(RobotListener):
