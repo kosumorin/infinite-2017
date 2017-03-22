@@ -56,15 +56,27 @@ class MRTLine(object):
         MRTStation.MARINA_BAY
     ])
 
-    MRTStation.JURONG_EAST.line_flow[EWL] = Direction.EAST
-    MRTStation.JURONG_EAST.line_flow[NSL] = Direction.NORTH
-    MRTStation.BUONA_VISTA.line_flow[EWL] = Direction.EAST
-    MRTStation.BUONA_VISTA.line_flow[CCL] = Direction.NORTH
-    MRTStation.CITY_HALL.line_flow[EWL] = Direction.EAST
-    MRTStation.CITY_HALL.line_flow[NSL] = Direction.SOUTH
-    MRTStation.BISHAN.line_flow[CCL] = Direction.EAST
-    MRTStation.BISHAN.line_flow[NSL] = Direction.SOUTH
-    MRTStation.PAYA_LEBAR.line_flow[EWL] = Direction.EAST
-    MRTStation.PAYA_LEBAR.line_flow[CCL] = Direction.SOUTH
-    MRTStation.MARINA_BAY.line_flow[NSL] = Direction.EAST
-    MRTStation.MARINA_BAY.line_flow[CCL] = Direction.WEST
+    MRTStation.JURONG_EAST.station_flow[EWL]    = { "next": Direction.SOUTH }
+    MRTStation.CLEMENTI.station_flow[EWL]       = { "next": Direction.EAST, "previous": Direction.NORTH }
+    MRTStation.BUONA_VISTA.station_flow[EWL]    = { "next": Direction.EAST, "previous": Direction.WEST }
+    MRTStation.CITY_HALL.station_flow[EWL]      = { "next": Direction.EAST, "previous": Direction.WEST }
+    MRTStation.PAYA_LEBAR.station_flow[EWL]     = { "next": Direction.EAST, "previous": Direction.WEST }
+    MRTStation.CHANGI.station_flow[EWL]         = { "previous": Direction.WEST }
+
+    MRTStation.JURONG_EAST.station_flow[NSL]    = { "next": Direction.NORTH }
+    MRTStation.WOODLANDS.station_flow[NSL]      = { "next": Direction.EAST, "previous": Direction.WEST }
+    MRTStation.BISHAN.station_flow[NSL]         = { "next": Direction.SOUTH, "previous": Direction.NORTH }
+    MRTStation.ORCHARD.station_flow[NSL]        = { "next": Direction.SOUTH, "previous": Direction.NORTH }
+    MRTStation.CITY_HALL.station_flow[NSL]      = { "next": Direction.SOUTH, "previous": Direction.NORTH }
+    MRTStation.MARINA_BAY.station_flow[NSL]     = { "previous": Direction.NORTH }
+
+    MRTStation.HABOURFRONT.station_flow[CCL]        = { "next": Direction.EAST }
+    MRTStation.HAW_PAR_VILLA.station_flow[CCL]      = { "next": Direction.NORTH, "previous": Direction.WEST }
+    MRTStation.BUONA_VISTA.station_flow[CCL]        = { "next": Direction.NORTH, "previous": Direction.SOUTH }
+    MRTStation.BOTANIC_GARDENS.station_flow[CCL]    = { "next": Direction.EAST, "previous": Direction.SOUTH }
+    MRTStation.BISHAN.station_flow[CCL]             = { "next": Direction.EAST, "previous": Direction.WEST }
+    MRTStation.SERANGOON.station_flow[CCL]          = { "next": Direction.SOUTH, "previous": Direction.WEST }
+    MRTStation.PAYA_LEBAR.station_flow[CCL]         = { "next": Direction.SOUTH, "previous": Direction.NORTH }
+    MRTStation.ESPLANADE.station_flow[CCL]          = { "next": Direction.WEST, "previous": Direction.NORTH }
+    MRTStation.MARINA_BAY.station_flow[CCL]         = { "previous": Direction.EAST }
+
