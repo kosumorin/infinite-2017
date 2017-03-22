@@ -28,6 +28,7 @@ class Line(object):
 class MRTLine(object):
     EWL = Line(name="East West Line", color=Color.GREEN, stations=[
         MRTStation.JURONG_EAST,
+        MRTStation.CLEMENTI,
         MRTStation.BUONA_VISTA,
         MRTStation.CITY_HALL,
         MRTStation.PAYA_LEBAR,
@@ -38,6 +39,7 @@ class MRTLine(object):
         MRTStation.JURONG_EAST,
         MRTStation.WOODLANDS,
         MRTStation.BISHAN,
+        MRTStation.ORCHARD,
         MRTStation.CITY_HALL,
         MRTStation.MARINA_BAY
     ])
@@ -46,7 +48,9 @@ class MRTLine(object):
         MRTStation.HABOURFRONT,
         MRTStation.HAW_PAR_VILLA,
         MRTStation.BUONA_VISTA,
+        MRTStation.BOTANIC_GARDENS,
         MRTStation.BISHAN,
+        MRTStation.SERANGOON,
         MRTStation.PAYA_LEBAR,
         MRTStation.ESPLANADE,
         MRTStation.MARINA_BAY
