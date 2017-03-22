@@ -17,14 +17,13 @@ class Train(DriverListener):
 
         self.driver.add_listener(self)
 
-    def start(self, route: 'Route') -> bool:
+    def start(self, route: 'Route'):
         if self.state == self.State.STOPPED:
             self.driver.set_route(route)
             self.state = self.State.RUNNING
 
-            return True
-        else:
-            return False
+            while True:
+                self.robot.step()
 
     def stop(self, is_immediate: bool):
         if is_immediate:
