@@ -15,6 +15,7 @@ class Train(DriverListener):
         self.driver = Driver()
         self.state = self.State.STOPPED
 
+        self.robot.add_listener(self.driver)
         self.driver.add_listener(self)
 
     def start(self, route: 'Route'):
