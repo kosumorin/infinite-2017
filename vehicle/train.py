@@ -5,7 +5,7 @@ from railway.route import Route
 from enum import IntEnum
 
 
-class Train(object, DriverListener):
+class Train(DriverListener):
     class State(IntEnum):
         RUNNING = 0
         STOPPED = 1
