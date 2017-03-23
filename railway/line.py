@@ -64,7 +64,7 @@ class MRTLine(object):
     MRTStation.CHANGI.station_flow[EWL]         = { "previous": Direction.WEST }
 
     MRTStation.JURONG_EAST.station_flow[NSL]    = { "next": Direction.NORTH }
-    MRTStation.WOODLANDS.station_flow[NSL]      = { "next": Direction.EAST, "previous": Direction.WEST }
+    MRTStation.WOODLANDS.station_flow[NSL]      = { "next": Direction.NORTH, "previous": Direction.SOUTH }
     MRTStation.BISHAN.station_flow[NSL]         = { "next": Direction.SOUTH, "previous": Direction.NORTH }
     MRTStation.ORCHARD.station_flow[NSL]        = { "next": Direction.SOUTH, "previous": Direction.NORTH }
     MRTStation.CITY_HALL.station_flow[NSL]      = { "next": Direction.SOUTH, "previous": Direction.NORTH }
