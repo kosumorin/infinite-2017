@@ -8,18 +8,15 @@ The stations featured in this project are:
 
 | Station No.   | EWL           | NSL           | CCL               |
 |:-------------:|---------------|---------------|-------------------|
-| 1             | Jurong East   | Jurong East   | Habourfront       |
-| 2             | Clementi      | Chua Chu Kang | Haw Par Villa     |
-| 3             | Buona Vista   | Woodlands     | Buona Vista       |
-| 4             | Outram Park   | Yishun        | Holland Village   |
-| 5             | City Hall     | Bishan        | Botanic Gardens   |
-| 6             | Bugis         | Toa Payoh     | Bishan            |
-| 7             | Kallang       | Newton        | Serangoon         |
-| 8             | Paya Lebar    | Orchard       | Paya Lebar        |
-| 9             | Bedok         | Somerset      | Stadium           |
-| 10            | Tanah Merah   | Dhoby Ghaut   | Esplanade         |
-| 11            | Changi        | City Hall     | Dhoby Ghaut       |
-| 12            | -             | Marina Bay    | -                 |
+| 1             | Jurong East   | Jurong East   | Harbourfront       |
+| 2             | Clementi      | Woodlands     | Haw Par Villa     |
+| 3             | Buona Vista   | Bishan        | Buona Vista       |
+| 4             | City Hall     | Orchard       | Botanic Gardens   |
+| 5             | Paya Lebar    | City Hall     | Bishan            |
+| 6             | Changi        | Marina Bay    | Serangoon         |
+| 7             | -             | -             | Paya Lebar        |
+| 8             | -             | -             | Esplanade         |
+| 9             | -             | -             | Marina Bay        |
 
 Users will select the starting station of a line and the destination station of any line on the railway system. The logic is powered by Python running on the EV3 using ev3dev OS.
 
