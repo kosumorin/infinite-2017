@@ -22,7 +22,7 @@ class Driver(RobotListener):
             train.stop()
             return
 
-        if len(self.route.path) == 0:
+        if len(self.route.station_path) == 0:
             train.stop()
         else:
             train.move_forward()
@@ -32,7 +32,7 @@ class Driver(RobotListener):
             train.stop()
             return
 
-        if len(self.route.path) == 0:
+        if len(self.route.station_path) == 0:
             train.stop()
         else:
             train.move_forward()
@@ -42,7 +42,7 @@ class Driver(RobotListener):
             train.stop()
             return
 
-        if len(self.route.path) == 0:
+        if len(self.route.station_path) == 0:
             train.stop()
         else:
             train.move_forward()
@@ -52,7 +52,7 @@ class Driver(RobotListener):
             train.stop()
             return
 
-        if len(self.route.path) == 0:
+        if len(self.route.station_path) == 0:
             train.stop()
         else:
             if self.current_MRT_line == MRTLine.EWL:
@@ -66,7 +66,7 @@ class Driver(RobotListener):
             train.stop()
             return
 
-        if len(self.route.path) == 0:
+        if len(self.route.station_path) == 0:
             train.stop()
         else:
             if self.current_MRT_line == MRTLine.CCL:
@@ -80,7 +80,7 @@ class Driver(RobotListener):
             train.stop()
             return
 
-        if len(self.route.path) == 0:
+        if len(self.route.station_path) == 0:
             train.stop()
         else:
             if self.current_MRT_line == MRTLine.NSL:
@@ -94,7 +94,7 @@ class Driver(RobotListener):
             train.stop()
             return
 
-        if len(self.route.path) == 0:
+        if len(self.route.station_path) == 0:
             train.stop()
         else:
             if left and right:
@@ -105,7 +105,7 @@ class Driver(RobotListener):
             train.stop()
             return
 
-        if len(self.route.path) == 0:
+        if len(self.route.station_path) == 0:
             train.stop()
         else:
             train.move_forward()
@@ -114,7 +114,7 @@ class Driver(RobotListener):
         # Return function if there is route is None. If it is not None but has no more station path, return also.
         if self.route is None:
             return
-        elif len(self.route.path) == 0:
+        elif len(self.route.station_path) == 0:
             return
 
         # Get station reached
