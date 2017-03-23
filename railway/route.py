@@ -10,7 +10,7 @@ class Route(object):
         self.end_line = end_line
         self.transfer_station = transfer_station
         self.transfer_turn_direction = None
-        self.path = []
+        self.station_path = []
         self.generate_path()
 
     def generate_path(self):
@@ -32,10 +32,10 @@ class Route(object):
     def add_station_to_path(self, train_dir: 'TrainDirection', line: 'Line', from_station: 'Station', to_station: 'Station'):
         if train_dir == TrainDirection.TOWARDS:
             for i in range(line.get_station_index(from_station) + 1, line.get_station_index(to_station) + 1):
-                self.path.append(line.stations[i])
+                self.station_path.append(line.stations[i])
         elif train_dir == TrainDirection.OPPOSITE:
             for i in range(line.get_station_index(from_station) - 1, line.get_station_index(to_station) - 1, -1):
-                self.path.append(line.stations[i])
+                self.station_path.append(line.stations[i])
 
     @staticmethod
     def get_train_direction(line: 'Line', from_station: 'Station', to_station: 'Station') -> 'TrainDirection':
