@@ -117,26 +117,41 @@ class Driver(RobotListener):
         elif len(self.route.path) == 0:
             return
 
+        # Get station reached
         station = self.route.path.pop(0)
 
+        # Alert all listeners
         for listener in self.listeners:
             listener.on_station_reached(station, self.current_MRT_line)
 
+        # If station is destination, stop train & return function
         if station == self.route.end_station:
             train.stop()
 
+            # Alert listeners when reached end station
             for listener in self.listeners:
                 listener.on_end_station_reached(station, self.current_MRT_line)
 
-        elif station == self.route.transfer_station:
-            if self.route.transfer_turn_direction == MovementDirection.LEFT:
-                train.turn_left()
-            elif self.route.transfer_turn_direction == MovementDirection.RIGHT:
-                train.turn_right()
+            return
+
+        # If station is transfer station, alert all listeners
+        if station == self.route.transfer_station:
+            for listener in self.listeners:
+                listener.on_line_change(station, self.current_MRT_line, self.route.end_line)
 
             self.current_MRT_line = self.route.end_line
 
-            train.move_forward()
+        # Get movement direction to the next station.
+        movement_direction = self.route.movement_path.pop(0)
+
+        # If next station is left or right, then turn left and right.
+        if movement_direction == MovementDirection.LEFT:
+            train.turn_left()
+        elif movement_direction == MovementDirection.RIGHT:
+            train.turn_right()
+
+        # Continue moving forward after turning. If next station is straight, move forward.
+        train.move_forward()
 
     def add_listener(self, listener: 'DriverListener'):
         self.listeners.append(listener)
