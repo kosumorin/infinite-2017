@@ -46,7 +46,7 @@ class Train(DriverListener):
             return False
 
     def stop(self, is_immediate: bool):
-        if is_immediate and self.state == self.state.RUNNING:
+        if is_immediate and self.state == self.State.RUNNING:
             self.driver.clear_route()
 
             self.state = self.State.STOPPED
