@@ -12,7 +12,7 @@ class Direction(IntEnum):
     WEST = 3
 
     @classmethod
-    def get_move_direction(cls, from_dir: 'Direction', to_dir: 'Direction') -> 'MovementDirection':
+    def get_movement_direction(cls, from_dir: 'Direction', to_dir: 'Direction') -> 'MovementDirection':
         if from_dir == cls.NORTH:
             if to_dir == cls.EAST:
                 return MovementDirection.RIGHT
