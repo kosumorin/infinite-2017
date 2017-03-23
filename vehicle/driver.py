@@ -118,7 +118,7 @@ class Driver(RobotListener):
             return
 
         # Get station reached
-        station = self.route.path.pop(0)
+        station = self.route.station_path.pop(0)
 
         # Alert all listeners
         for listener in self.listeners:
