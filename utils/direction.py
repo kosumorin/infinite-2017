@@ -13,7 +13,9 @@ class Direction(IntEnum):
 
     @classmethod
     def get_movement_direction(cls, from_dir: 'Direction', to_dir: 'Direction') -> 'MovementDirection':
-        if from_dir == cls.NORTH:
+        if to_dir == from_dir:
+            return MovementDirection.STRAIGHT
+        elif from_dir == cls.NORTH:
             if to_dir == cls.EAST:
                 return MovementDirection.RIGHT
             elif to_dir == cls.WEST:
