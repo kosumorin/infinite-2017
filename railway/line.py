@@ -45,7 +45,7 @@ class MRTLine(object):
     ])
 
     CCL = Line(name="Circle Line", color=Color.YELLOW, stations=[
-        MRTStation.HABOURFRONT,
+        MRTStation.HARBOURFRONT,
         MRTStation.HAW_PAR_VILLA,
         MRTStation.BUONA_VISTA,
         MRTStation.BOTANIC_GARDENS,
@@ -64,13 +64,13 @@ class MRTLine(object):
     MRTStation.CHANGI.station_flow[EWL]         = { "previous": Direction.WEST }
 
     MRTStation.JURONG_EAST.station_flow[NSL]    = { "next": Direction.NORTH }
-    MRTStation.WOODLANDS.station_flow[NSL]      = { "next": Direction.EAST, "previous": Direction.WEST }
+    MRTStation.WOODLANDS.station_flow[NSL]      = { "next": Direction.NORTH, "previous": Direction.SOUTH }
     MRTStation.BISHAN.station_flow[NSL]         = { "next": Direction.SOUTH, "previous": Direction.NORTH }
     MRTStation.ORCHARD.station_flow[NSL]        = { "next": Direction.SOUTH, "previous": Direction.NORTH }
     MRTStation.CITY_HALL.station_flow[NSL]      = { "next": Direction.SOUTH, "previous": Direction.NORTH }
     MRTStation.MARINA_BAY.station_flow[NSL]     = { "previous": Direction.NORTH }
 
-    MRTStation.HABOURFRONT.station_flow[CCL]        = { "next": Direction.EAST }
+    MRTStation.HARBOURFRONT.station_flow[CCL]        = {"next": Direction.EAST}
     MRTStation.HAW_PAR_VILLA.station_flow[CCL]      = { "next": Direction.NORTH, "previous": Direction.WEST }
     MRTStation.BUONA_VISTA.station_flow[CCL]        = { "next": Direction.NORTH, "previous": Direction.SOUTH }
     MRTStation.BOTANIC_GARDENS.station_flow[CCL]    = { "next": Direction.EAST, "previous": Direction.SOUTH }

@@ -14,7 +14,7 @@ class MRTStation(object):
     WOODLANDS = Station("Woodlands")
     ESPLANADE = Station("Esplanade")
     HAW_PAR_VILLA = Station("Haw Par Villa")
-    HABOURFRONT = Station("Habourfront")
+    HARBOURFRONT = Station("Harbourfront")
     CLEMENTI = Station("Clementi")
     BOTANIC_GARDENS = Station("Botanic Gardens")
     ORCHARD = Station("Orchard")
