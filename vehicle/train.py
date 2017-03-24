@@ -16,7 +16,7 @@ class Train(DriverListener):
             self.robot = robot
             self.is_running = False
 
-        def start(self):
+        def run(self):
             self.is_running = True
 
             while self.is_running:
