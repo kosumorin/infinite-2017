@@ -10,7 +10,7 @@ class Route(object):
         self.end_line = end_line
         self.transfer_station = transfer_station
         self.station_path = []
-        self.movement_path = []
+        self.movement_flow = []
 
         self.generate_path()
 
@@ -23,7 +23,7 @@ class Route(object):
             self.add_station_to_path(train_direction_end_line, self.end_line, self.transfer_station, self.end_station)
 
             self.add_movement_to_path(train_direction_start_line, self.start_line, self.start_station, self.transfer_station)
-            self.movement_path.append(self.get_intersection_turn_direction(train_direction_start_line, train_direction_end_line))
+            self.movement_flow.append(self.get_intersection_turn_direction(train_direction_start_line, train_direction_end_line))
             self.add_movement_to_path(train_direction_end_line, self.end_line, self.transfer_station, self.end_station)
 
         else:
@@ -59,7 +59,7 @@ class Route(object):
 
             movement_direction = Direction.get_movement_direction(current, next)
 
-            self.movement_path.append(movement_direction)
+            self.movement_flow.append(movement_direction)
 
     @staticmethod
     def get_train_direction(line: 'Line', from_station: 'Station', to_station: 'Station') -> 'TrainDirection':

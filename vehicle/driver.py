@@ -142,7 +142,7 @@ class Driver(RobotListener):
             self.current_MRT_line = self.route.end_line
 
         # Get movement direction to the next station.
-        movement_direction = self.route.movement_path.pop(0)
+        movement_direction = self.route.movement_flow.pop(0)
 
         # If next station is left or right, then turn left and right.
         if movement_direction == MovementDirection.LEFT:
