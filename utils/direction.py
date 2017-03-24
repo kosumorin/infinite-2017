@@ -36,6 +36,10 @@ class Direction(IntEnum):
             elif to_dir == cls.SOUTH:
                 return MovementDirection.LEFT
 
+        # Robot will not move backwards in this project. Let the robot run straight.
+        # I mean it is easy to debug if the robot moves forward instead of backwards LOL
+        return MovementDirection.STRAIGHT
+
     @classmethod
     def opposite(cls, dir: 'Direction') -> 'Direction':
         if dir == cls.NORTH:
