@@ -39,7 +39,7 @@ class Robot(object):
         self.left_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=TURNING_MILLISECONDS)
         self.right_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=TURNING_MILLISECONDS)
 
-        # Block any calls to the motor while the train is turning
+        # Block any calls to the motor while the robot is turning
         self.left_large_motor.wait_while('running')
         self.right_large_motor.wait_while('running')
 
@@ -48,7 +48,7 @@ class Robot(object):
         self.left_large_motor.run_timed(speed_sp=TURNING_POWER, time_sp=TURNING_MILLISECONDS)
         self.right_large_motor.run_timed(speed_sp=-TURNING_POWER, time_sp=TURNING_MILLISECONDS)
 
-        # Block any calls to the motor while the train is turning
+        # Block any calls to the motor while the robot is turning
         self.left_large_motor.wait_while('running')
         self.right_large_motor.wait_while('running')
 
@@ -102,29 +102,29 @@ class Robot(object):
         self.listeners.append(listener)
 
 class RobotListener(object):
-    def on_invalid(self, train: 'Robot', left: bool, right: bool):
+    def on_invalid(self, robot: 'Robot', left: bool, right: bool):
         pass
 
-    def on_black(self, train: 'Robot', left: bool, right: bool):
+    def on_black(self, robot: 'Robot', left: bool, right: bool):
         pass
 
-    def on_blue(self, train: 'Robot', left: bool, right: bool):
+    def on_blue(self, robot: 'Robot', left: bool, right: bool):
         pass
 
-    def on_green(self, train: 'Robot', left: bool, right: bool):
+    def on_green(self, robot: 'Robot', left: bool, right: bool):
         pass
 
-    def on_yellow(self, train: 'Robot', left: bool, right: bool):
+    def on_yellow(self, robot: 'Robot', left: bool, right: bool):
         pass
 
-    def on_red(self, train: 'Robot', left: bool, right: bool):
+    def on_red(self, robot: 'Robot', left: bool, right: bool):
         pass
 
-    def on_white(self, train: 'Robot', left: bool, right: bool):
+    def on_white(self, robot: 'Robot', left: bool, right: bool):
         pass
 
-    def on_brown(self, train: 'Robot', left: bool, right: bool):
+    def on_brown(self, robot: 'Robot', left: bool, right: bool):
         pass
 
-    def on_click(self, train: 'Robot'):
+    def on_click(self, robot: 'Robot'):
         pass

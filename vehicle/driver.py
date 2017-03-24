@@ -17,100 +17,100 @@ class Driver(RobotListener):
         self.route = None
         self.current_MRT_line = None
 
-    def on_invalid(self, train: 'Robot', left: bool, right: bool):
+    def on_invalid(self, robot: 'Robot', left: bool, right: bool):
         if self.route is None:
-            train.stop()
+            robot.stop()
             return
 
         if len(self.route.station_path) == 0:
-            train.stop()
+            robot.stop()
         else:
-            train.move_forward()
+            robot.move_forward()
 
-    def on_black(self, train: 'Robot', left: bool, right: bool):
+    def on_black(self, robot: 'Robot', left: bool, right: bool):
         if self.route is None:
-            train.stop()
+            robot.stop()
             return
 
         if len(self.route.station_path) == 0:
-            train.stop()
+            robot.stop()
         else:
-            train.move_forward()
+            robot.move_forward()
 
-    def on_blue(self, train: 'Robot', left: bool, right: bool):
+    def on_blue(self, robot: 'Robot', left: bool, right: bool):
         if self.route is None:
-            train.stop()
+            robot.stop()
             return
 
         if len(self.route.station_path) == 0:
-            train.stop()
+            robot.stop()
         else:
-            train.move_forward()
+            robot.move_forward()
 
-    def on_green(self, train: 'Robot', left: bool, right: bool):
+    def on_green(self, robot: 'Robot', left: bool, right: bool):
         if self.route is None:
-            train.stop()
+            robot.stop()
             return
 
         if len(self.route.station_path) == 0:
-            train.stop()
+            robot.stop()
         else:
             if self.current_MRT_line == MRTLine.EWL:
                 if left:
-                    train.steer_left()
+                    robot.steer_left()
                 elif right:
-                    train.steer_right()
+                    robot.steer_right()
 
-    def on_yellow(self, train: 'Robot', left: bool, right: bool):
+    def on_yellow(self, robot: 'Robot', left: bool, right: bool):
         if self.route is None:
-            train.stop()
+            robot.stop()
             return
 
         if len(self.route.station_path) == 0:
-            train.stop()
+            robot.stop()
         else:
             if self.current_MRT_line == MRTLine.CCL:
                 if left:
-                    train.steer_left()
+                    robot.steer_left()
                 elif right:
-                    train.steer_right()
+                    robot.steer_right()
 
-    def on_red(self, train: 'Robot', left: bool, right: bool):
+    def on_red(self, robot: 'Robot', left: bool, right: bool):
         if self.route is None:
-            train.stop()
+            robot.stop()
             return
 
         if len(self.route.station_path) == 0:
-            train.stop()
+            robot.stop()
         else:
             if self.current_MRT_line == MRTLine.NSL:
                 if left:
-                    train.steer_left()
+                    robot.steer_left()
                 elif right:
-                    train.steer_right()
+                    robot.steer_right()
 
-    def on_white(self, train: 'Robot', left: bool, right: bool):
+    def on_white(self, robot: 'Robot', left: bool, right: bool):
         if self.route is None:
-            train.stop()
+            robot.stop()
             return
 
         if len(self.route.station_path) == 0:
-            train.stop()
+            robot.stop()
         else:
             if left and right:
-                train.move_forward()
+                robot.move_forward()
 
-    def on_brown(self, train: 'Robot', left: bool, right: bool):
+    def on_brown(self, robot: 'Robot', left: bool, right: bool):
         if self.route is None:
-            train.stop()
+            robot.stop()
             return
 
         if len(self.route.station_path) == 0:
-            train.stop()
+            robot.stop()
         else:
-            train.move_forward()
+            robot.move_forward()
 
-    def on_click(self, train: 'Robot'):
+    def on_click(self, robot: 'Robot'):
         # Return function if there is route is None. If it is not None but has no more station path, return also.
         if self.route is None:
             return
@@ -126,7 +126,7 @@ class Driver(RobotListener):
 
         # If station is destination, stop train & return function
         if station == self.route.end_station:
-            train.stop()
+            robot.stop()
 
             # Alert listeners when reached end station
             for listener in self.listeners:
@@ -146,12 +146,12 @@ class Driver(RobotListener):
 
         # If next station is left or right, then turn left and right.
         if movement_direction == MovementDirection.LEFT:
-            train.turn_left()
+            robot.turn_left()
         elif movement_direction == MovementDirection.RIGHT:
-            train.turn_right()
+            robot.turn_right()
 
         # Continue moving forward after turning. If next station is straight, move forward.
-        train.move_forward()
+        robot.move_forward()
 
     def add_listener(self, listener: 'DriverListener'):
         self.listeners.append(listener)
