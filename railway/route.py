@@ -1,5 +1,5 @@
-from railway.station import Station, MRTStation
-from railway.line import Line, MRTLine
+from railway.station import Station
+from railway.line import Line
 from utils.direction import TrainDirection, Direction, MovementDirection
 
 class Route(object):
