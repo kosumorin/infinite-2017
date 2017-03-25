@@ -1,7 +1,8 @@
 from railway.station import Station
-from railway.line import Line, MRTLine
+from railway.line import Line
 from vehicle.robot import Robot, RobotListener
 from utils.direction import MovementDirection
+from utils.color import Color
 
 class Driver(RobotListener):
     def __init__(self):
@@ -55,7 +56,7 @@ class Driver(RobotListener):
         if len(self.route.station_path) == 0:
             robot.stop()
         else:
-            if self.current_MRT_line == MRTLine.EWL:
+            if self.current_MRT_line.color == Color.GREEN:
                 if left:
                     robot.steer_left()
                 elif right:
@@ -69,7 +70,7 @@ class Driver(RobotListener):
         if len(self.route.station_path) == 0:
             robot.stop()
         else:
-            if self.current_MRT_line == MRTLine.CCL:
+            if self.current_MRT_line.color == Color.YELLOW:
                 if left:
                     robot.steer_left()
                 elif right:
@@ -83,7 +84,7 @@ class Driver(RobotListener):
         if len(self.route.station_path) == 0:
             robot.stop()
         else:
-            if self.current_MRT_line == MRTLine.NSL:
+            if self.current_MRT_line.color == Color.RED:
                 if left:
                     robot.steer_left()
                 elif right:
