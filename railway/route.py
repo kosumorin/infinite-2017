@@ -44,11 +44,11 @@ class Route(object):
 
         if train_dir == TrainDirection.TOWARDS:
             for i in range(line.get_station_index(from_station), line.get_station_index(to_station)):
-                directions.append(line.stations[i].station_flow[line]["next"])
+                directions.append(line.stations[i].station_flow[line.name]["next"])
 
         elif train_dir == TrainDirection.OPPOSITE:
             for i in range(line.get_station_index(from_station), line.get_station_index(to_station), -1):
-                directions.append(line.stations[i].station_flow[line]["previous"])
+                directions.append(line.stations[i].station_flow[line.name]["previous"])
 
         for i in range(0, len(directions)):
             if i + 1 == len(directions):
@@ -75,16 +75,16 @@ class Route(object):
         if train_dir_start == TrainDirection.TOWARDS:
             prev_station = self.start_line.stations[self.start_line.get_station_index(self.transfer_station) - 1]
 
-            from_direction = prev_station.station_flow[self.start_line]["next"]
+            from_direction = prev_station.station_flow[self.start_line.name]["next"]
 
         else:
             prev_station = self.start_line.stations[self.start_line.get_station_index(self.transfer_station) + 1]
 
-            from_direction = prev_station.station_flow[self.start_line]["previous"]
+            from_direction = prev_station.station_flow[self.start_line.name]["previous"]
 
         if train_dir_end == TrainDirection.TOWARDS:
-            to_direction = self.transfer_station.station_flow[self.end_line]["next"]
+            to_direction = self.transfer_station.station_flow[self.end_line.name]["next"]
         else:
-            to_direction = self.transfer_station.station_flow[self.end_line]["previous"]
+            to_direction = self.transfer_station.station_flow[self.end_line.name]["previous"]
 
         return Direction.get_movement_direction(from_direction, to_direction)
