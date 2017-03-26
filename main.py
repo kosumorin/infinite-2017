@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
-from railway.route import Route
-from vehicle.train import Train
-from data.map import MRTStations, MRTLines
+from flask import Flask
+app = Flask(__name__, static_url_path="/static")
+
+@app.route("/")
+def index():
+    return app.send_static_file("index.html")
+
+@app.route("/map")
+def map():
+    file = open("./data/map.json", "r")
+    json = file.read()
+    file.close()
+
+    response = app.make_response(json)
+
+    # Specify content & mime type
+    response.headers["Content-Type"] = "application/json"
+    response.mimetype = "application/json"
+
+    return response
 
 if __name__ == "__main__":
-    print("Started")
-
-    start_station   = MRTStations.get_station_by_name("jurong east")
-    end_station     = MRTStations.get_station_by_name("marina bay")
-    trans_station   = MRTStations.get_station_by_name("city hall")
-    start_line      = MRTLines.get_line_by_name("ewl")
-    end_line        = MRTLines.get_line_by_name("nsl")
-
-    route = Route(start_station, end_station, start_line, end_line, trans_station)
-
-    train = Train()
-    train.start(route)
+    app.run()
