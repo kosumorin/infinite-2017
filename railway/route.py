@@ -44,8 +44,12 @@ class Route(object):
         end_station = MRTStations.get_station_by_id(converted_JSON["end_station"]["id"])
         start_line = MRTLines.get_line_by_name(converted_JSON["start_line"]["name"])
         end_line = MRTLines.get_line_by_name(converted_JSON["end_line"]["name"])
-        transfer_station = MRTStations.get_station_by_id(converted_JSON["transfer_station"]["id"])
         station_path = convert_station_path(converted_JSON["station_path"])
         movement_flow = convert_movement_flow(converted_JSON["movement_flow"])
+
+        if len(converted_JSON["transfer_station"]) == 0:
+            transfer_station = None
+        else:
+            transfer_station = MRTStations.get_station_by_id(converted_JSON["transfer_station"]["id"])
 
         return Route(start_station, end_station, start_line, end_line, transfer_station, station_path, movement_flow)
