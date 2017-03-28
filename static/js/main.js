@@ -199,9 +199,11 @@ var MRT = {
     getPossibleRoutes : function (startStation, endStation){
         let routes = []
 
-        let Route = function (startStation, endStation, transferStation, stationPath, movementFlow) {
+        let Route = function (startStation, endStation, startLine, endLine, transferStation, stationPath, movementFlow) {
             this.start_station = startStation;
             this.end_station = endStation;
+            this.start_line = startLine;
+            this.end_line = endLine;
             this.transfer_station = transferStation;
             this.station_path = stationPath;
             this.movement_flow = movementFlow;
@@ -233,6 +235,8 @@ var MRT = {
                         routes.push(new Route(
                             startStation,
                             endStation,
+                            startLine,
+                            endLine,
                             interchange,
                             stationPath,
                             movementFlow
@@ -243,6 +247,8 @@ var MRT = {
                     routes.push(new Route(
                         startStation,
                         endStation,
+                        startLine,
+                        endLine,
                         {},
                         this.generateStationPath(startStation, endStation, startLine),
                         this.generateMovementFlow(startStation, endStation, startLine)
