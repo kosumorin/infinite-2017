@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
-from flask import Flask
+from flask import Flask, request
+from railway.route import Route
+from vehicle.train import Train
+
 app = Flask(__name__, static_url_path="/static")
+
+train = Train()
 
 @app.route("/")
 def index():
@@ -19,6 +24,13 @@ def map():
     response.mimetype = "application/json"
 
     return response
+
+@app.route("/start", methods=["POST"])
+def start():
+    if request.method == "POST":
+        train.start(Route.convert_from_JSON(request.get_data(as_text=True)))
+
+    return "Started", 200
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
