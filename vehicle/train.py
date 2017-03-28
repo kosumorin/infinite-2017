@@ -28,7 +28,7 @@ class Train(DriverListener):
     def __init__(self):
         self.robot = Robot()
         self.driver = Driver()
-        self.thread = self.TrainThread(self.robot)
+        self.thread = None
         self.state = self.State.STOPPED
 
         self.robot.add_listener(self.driver)
@@ -38,8 +38,10 @@ class Train(DriverListener):
         if self.state == self.State.STOPPED:
             self.driver.set_route(route)
 
-            self.state = self.State.RUNNING
+            self.thread = self.TrainThread(self.robot)
             self.thread.start()
+
+            self.state = self.State.RUNNING
 
             return True
         else:
@@ -49,8 +51,10 @@ class Train(DriverListener):
         if is_immediate and self.state == self.State.RUNNING:
             self.driver.clear_route()
 
-            self.state = self.State.STOPPED
             self.thread.stop()
+            self.thread = None
+
+            self.state = self.State.STOPPED
 
     def on_end_station_reached(self, station: 'Station', line: 'Line'):
         self.stop(True)
