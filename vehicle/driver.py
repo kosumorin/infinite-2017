@@ -136,11 +136,12 @@ class Driver(RobotListener):
             return
 
         # If station is transfer station, alert all listeners
-        if station == self.route.transfer_station:
-            for listener in self.listeners:
-                listener.on_line_change(station, self.current_MRT_line, self.route.end_line)
+        if self.route.transfer_station is not None:
+            if station == self.route.transfer_station:
+                for listener in self.listeners:
+                    listener.on_line_change(station, self.current_MRT_line, self.route.end_line)
 
-            self.current_MRT_line = self.route.end_line
+                self.current_MRT_line = self.route.end_line
 
         # Get movement direction to the next station.
         movement_direction = self.route.movement_flow.pop(0)
