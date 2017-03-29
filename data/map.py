@@ -12,7 +12,7 @@ map_data = json.loads(map_file.read())
 map_file.close()
 
 # Helper method for MRTStations
-def convert_station_flow(station_flow: 'Dict[]'):
+def convert_to_station_flow(station_flow: dict) -> dict:
     new_station_flow = {}
 
     for key in station_flow.keys():
@@ -56,7 +56,7 @@ class MRTStations(object):
 
     for station in stations_data:
         s = Station(station["id"], station["name"])
-        s.station_flow = convert_station_flow(station["station_flow"])
+        s.station_flow = convert_to_station_flow(station["station_flow"])
 
         stations.append(s)
 
