@@ -1,6 +1,7 @@
 from railway.line import Line
 from railway.station import Station
 from utils.direction import Direction
+from utils.color import Color
 
 import os
 import json
@@ -30,6 +31,24 @@ def convert_station_flow(station_flow: 'Dict[]'):
                 new_station_flow[key][inner_key] = Direction.WEST
 
     return new_station_flow
+
+def convert_to_color(color: str) -> 'Color':
+    if color.upper() == "INVALID":
+        return Color.INVALID
+    elif color.upper() == "BLACK":
+        return Color.BLACK
+    elif color.upper() == "BLUE":
+        return Color.BLUE
+    elif color.upper() == "GREEN":
+        return Color.GREEN
+    elif color.upper() == "YELLOW":
+        return Color.YELLOW
+    elif color.upper() == "RED":
+        return Color.RED
+    elif color.upper() == "WHITE":
+        return Color.WHITE
+    elif color.upper() == "BROWN":
+        return Color.BROWN
 
 class MRTStations(object):
     stations_data = map_data["stations"]
@@ -67,7 +86,7 @@ class MRTLines(object):
     lines = []
 
     for line in lines_data:
-        l = Line(line["name"], line["color"], get_stations_by_ids(line["station_ids"]))
+        l = Line(line["name"], convert_to_color(line["color"]), get_stations_by_ids(line["station_ids"]))
 
         lines.append(l)
 

@@ -172,7 +172,7 @@
     "lines":[
         {
             "name":"EWL",
-            "color":"3",
+            "color":"GREEN",
             "station_ids":[
                 1,
                 2,
@@ -184,7 +184,7 @@
         },
         {
             "name":"NSL",
-            "color":"5",
+            "color":"RED",
             "station_ids":[
                 1,
                 7,
@@ -196,7 +196,7 @@
         },
         {
             "name":"CCL",
-            "color":"4",
+            "color":"YELLOW",
             "station_ids":[
                 11,
                 12,
