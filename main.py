@@ -3,7 +3,7 @@ from flask import Flask, request
 from railway.route import Route
 from vehicle.train import Train
 
-app = Flask(__name__, static_url_path="/webapp/static")
+app = Flask(__name__, static_url_path="/webapp/static", static_folder="webapp/static")
 
 train = Train()
 
