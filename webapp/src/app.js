@@ -81,8 +81,8 @@ class App extends React.Component{
         // From StationButton's div element.
         const stationId = event.target.attributes["data-stationId"].value;
 
-        // Don't continue if the the station selected is the same as the previous station.
-        if (stationId == this.state.startStationId || stationId == this.stage.endStationId){
+        // Don't continue if the station selected is the same as the previous station.
+        if (stationId == this.state.startStationId || stationId == this.state.endStationId){
             return;
         }
 
