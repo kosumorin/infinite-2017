@@ -1,0 +1,144 @@
+/* Map */
+
+.map{
+    height: 500px;
+    width: 800px;
+    margin-top: 75px;
+    background-repeat: no-repeat;
+    background-image: url("/webapp/static/assets/map.svg");
+}
+
+/* Station */
+
+.station{
+    position: absolute;    
+}
+
+.station#JurongEast{
+    left: -26px;
+    top: 85px;
+}
+
+.station#Clementi{
+    left: -13px;
+    top: 283px;
+}
+
+.station#BuonaVista{
+    left: 183px;
+    top: 283px;
+}
+
+.station#CityHall{
+    left: 386px;
+    top: 283px;
+}
+
+.station#PayaLebar{
+    left: 584px;
+    top: 283px;
+}
+
+.station#Changi{
+    left: 765px;
+    top: 283px;
+}
+
+.station#Woodlands{
+    left: 194px;
+    top: -52px;
+}
+
+.station#Bishan{
+    left: 386px;
+    top: 85px;
+}
+
+.station#Orchard{
+    left: 400px;
+    top: 185px
+}
+
+.station#MarinaBay{
+    left: 386px;
+    top: 416px;
+}
+
+.station#Harbourfront{
+    left: -25px;
+    top: 416px;
+}
+
+.station#HawParVilla{
+    left: 183px;
+    top: 416px;
+}
+
+.station#BotanicGardens{
+    left: 173px;
+    top: 85px;
+}
+
+.station#Serangoon{
+    left: 592px;
+    top: 85px;
+}
+
+.station#Esplanade{
+    left: 592px;
+    top: 416px;
+}
+
+/* Station Button */
+
+.stationButton{
+    height: 30px;
+    width: 30px;
+    background-color: #ffffff;
+    border: 5pt solid #000000;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.stationButton:hover{
+    cursor: pointer;
+    background-color: #bdbdbd;
+}
+
+.stationButton.selected{
+    background-color: #616161;
+}
+
+/* Station Tag */
+
+.stationTag{
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    right: 55px;
+    bottom: 5px;
+}
+
+/* Line tag */
+.stationTag .lineTag{
+    display: inline;
+}
+
+.lineTag{
+    padding: 2px 5px;
+    font-size: 12px;
+    color: #ffffff;
+    margin: 0 3px;
+}
+
+.lineTag.EWL{
+    background-color: #48B553;
+}
+
+.lineTag.NSL{
+    background-color: #E90024;
+}
+
+.lineTag.CCL{
+    background-color: #FDB027;
+}
