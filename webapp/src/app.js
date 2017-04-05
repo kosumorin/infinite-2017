@@ -129,7 +129,7 @@ class App extends React.Component{
             let currentEndStationId = this.state.endStationId;
 
             // Don't continue if no station selected.
-            if (currentStartStationId == -1){
+            if (currentEndStationId == -1){
                 return;
             }
         }
