@@ -165,8 +165,8 @@ const MapUtils = {
                     let interchanges = this.findInterchangeFromLines(startLine, endLine);
 
                     for (let interchange of interchanges){
-                        // Don't let the interchange be the start station.
-                        if (interchange == startStation){
+                        // Don't let the interchange be the start station or end station.
+                        if (interchange == startStation || interchange == endStation){
                             continue;
                         }
 
