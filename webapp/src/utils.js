@@ -196,7 +196,7 @@ const MapUtils = {
                         endStation,
                         startLine,
                         endLine,
-                        {},
+                        null,
                         this.generateStationPath(startStation, endStation, startLine),
                         this.generateMovementFlow(startStation, endStation, startLine)
                     ));
