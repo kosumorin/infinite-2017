@@ -5,6 +5,10 @@ html, body, .app{
     font-family: "Roboto", "Arial", sans-serif;
 }
 
+body{
+    margin: 0;
+}
+
 .container{
     height: 100%;
 }
