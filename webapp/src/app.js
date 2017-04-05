@@ -1,5 +1,6 @@
 import React from 'react';
 import Map from './map';
+import RoutePicker from './route';
 import { MapUtils } from './utils';
 
 class App extends React.Component{
@@ -11,7 +12,9 @@ class App extends React.Component{
             stations: [], 
             stage: 0,
             startStationId: -1,
-            endStationId: -1
+            endStationId: -1,
+            routes: [],
+            selectedRouteIndex: -1 
         };
 
         this.guideMessage = [
@@ -27,6 +30,7 @@ class App extends React.Component{
         ]
         
         this.onStationButtonClickHandler    = this.onStationButtonClickHandler.bind(this);
+        this.onRouteClickHandler            = this.onRouteClickHandler.bind(this);
         this.goToNextStage                  = this.goToNextStage.bind(this);
         this.loadMapData                    = this.loadMapData.bind(this);
         this.convertMapJSON                 = this.convertMapJSON.bind(this);
@@ -108,6 +112,12 @@ class App extends React.Component{
         }
     }
 
+    onRouteClickHandler(event){
+        const routeIndex = event.target.attributes["data-routeIndex"].value;
+
+        this.setState({ selectedRouteIndex: routeIndex });
+    }
+
     goToNextStage(){
         /*
          *  Stage 0: choosing start station stage
@@ -141,6 +151,14 @@ class App extends React.Component{
         else{
             this.setState({ stage: 0 });            
         }
+
+        // If next stage is 2, generate routes.
+        if (currentStage + 1 === 2){
+            let startStation = MapUtils.getStationById(this.state.startStationId, this.state.stations);
+            let endStation = MapUtils.getStationById(this.state.endStationId, this.state.stations);
+
+            this.setState({ routes: MapUtils.getPossibleRoutes(startStation, endStation, this.state.stations, this.state.lines)});
+        }
     }
 
     render(){
@@ -154,6 +172,11 @@ class App extends React.Component{
                 <div className="row">
                     <div className="twelve columns">                    
                         <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="twelve columns">
+                        <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/>
                     </div>
                 </div>
                 <div className="row">

@@ -157,3 +157,28 @@ body{
 .lineTag.CCL{
     background-color: #FDB027;
 }
+
+/* Route */
+.route{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 5px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer
+}
+
+.route:hover{
+    background-color: #bdbdbd;
+}
+
+.route *{
+    display: inline;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.route.selected{
+    background-color: #616161;
+}
