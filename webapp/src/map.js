@@ -68,4 +68,5 @@ class Map extends React.Component{
     }
 }
 
+export { LineTag, StationTag };
 export default Map;
