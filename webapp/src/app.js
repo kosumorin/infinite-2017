@@ -113,9 +113,28 @@ class App extends React.Component{
          *  Stage 0: choosing start station stage
          *  Stage 1: choosing end station stage
          *  Stage 2: choosing route stage
+         *  Stage 3: moving stage
          */
         const currentStage = this.state.stage;
 
+        if (currentStage === 0){
+            let currentStartStationId = this.state.startStationId;
+
+            // Don't continue if no station selected.
+            if (currentStartStationId == -1){
+                return;
+            }
+        }
+        else if (currentStage === 1){
+            let currentEndStationId = this.state.endStationId;
+
+            // Don't continue if no station selected.
+            if (currentStartStationId == -1){
+                return;
+            }
+        }
+
+        // Move on to next stage if all checks passed.
         if (currentStage < 3){
             this.setState({ stage: currentStage + 1 });
         }
