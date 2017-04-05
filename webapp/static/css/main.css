@@ -125,9 +125,8 @@ body{
     background-color: #616161;
 }
 
-/* Station Tag */
-
-.stationTag{
+/* Station Info */
+.stationInfo{
     text-align: center;
     font-size: 14px;
     position: relative;

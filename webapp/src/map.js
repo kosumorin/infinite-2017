@@ -1,22 +1,16 @@
 import React from 'react';
 import { MapUtils } from './utils';
 
-class LineTag extends React.Component{
-    render(){
-        return <div className={"lineTag " + this.props.lineName}>{this.props.lineName}</div>
-    }
-}
-
-class StationTag extends React.Component{
+class StationInfo extends React.Component{
     render(){
         return (
-            <div className="stationTag">
+            <div className="stationInfo">
                 {
-                    this.props.linesOfStation.map((line, index) => {
-                        return <LineTag key={index} lineName={line["name"]}/>
+                    this.props.lineNames.map((lineName, index) => {
+                        return <div key={index} className={"lineTag " + lineName}>{lineName}</div>
                     })
                 }
-                <div>{this.props.stationName}</div>   
+                <div className="stationTag">{this.props.stationName}</div>
             </div>
         );
     }
@@ -40,7 +34,7 @@ class Station extends React.Component{
 
         return (
             <div className="station" id={uniqueId}>
-                <StationTag stationName={this.props.station["name"]} linesOfStation={this.props.linesOfStation}/>
+                <StationInfo stationName={this.props.station["name"]} lineNames={this.props.lineNames}/>
                 <StationButton stationId={this.props.station["id"]} isSelected={this.props.isSelected} onClickHandler={this.props.onClickHandler} />
             </div>
         );         
@@ -53,14 +47,16 @@ class Map extends React.Component{
             <div className="map">
                 {
                     this.props.stations.map((station, index) => {
-                        const linesOfStation = MapUtils.getLinesOfStation(station, this.props.lines);
+                        const lineNames = MapUtils.getLinesOfStation(station, this.props.lines).map((line) => {
+                            return line["name"];
+                        });
 
                         let isSelected = false;
                         if (station == MapUtils.getStationById(this.props.startStationId, this.props.stations) || station == MapUtils.getStationById(this.props.endStationId, this.props.stations)){
                             isSelected = true;
                         }
 
-                        return <Station key={index} station={station} linesOfStation={linesOfStation} isSelected={isSelected} onClickHandler={this.props.onClickHandler}/>;
+                        return <Station key={index} station={station} lineNames={lineNames} isSelected={isSelected} onClickHandler={this.props.onClickHandler}/>;
                     })
                 }
             </div>
@@ -68,5 +64,5 @@ class Map extends React.Component{
     }
 }
 
-export { LineTag, StationTag };
+export { StationInfo };
 export default Map;
