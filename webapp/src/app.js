@@ -13,6 +13,18 @@ class App extends React.Component{
             startStationId: -1,
             endStationId: -1
         };
+
+        this.guideMessage = [
+            "choose starting station",
+            "choose destination station",
+            "choose preferred route"
+        ];
+
+        this.buttonMessage = [
+            "next",
+            "next",
+            "go!"
+        ]
         
         this.onStationButtonClickHandler    = this.onStationButtonClickHandler.bind(this);
         this.goToNextStage                  = this.goToNextStage.bind(this);
@@ -116,7 +128,17 @@ class App extends React.Component{
         return (
             <div className="container">
                 <div className="row">
-                    <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
+                    <div className="twelve columns">
+                        <h3>{this.guideMessage[this.state.stage]}</h3>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="twelve columns">                    
+                        <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <button onClick={this.goToNextStage}>{this.buttonMessage[this.state.stage]}</button>
                 </div>
             </div>
         );
