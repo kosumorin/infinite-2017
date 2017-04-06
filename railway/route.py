@@ -47,7 +47,7 @@ class Route(object):
         station_path = convert_station_path(converted_JSON["station_path"])
         movement_flow = convert_movement_flow(converted_JSON["movement_flow"])
 
-        if len(converted_JSON["transfer_station"]) == 0:
+        if len(converted_JSON["transfer_station"]) is None:
             transfer_station = None
         else:
             transfer_station = MRTStations.get_station_by_id(converted_JSON["transfer_station"]["id"])
