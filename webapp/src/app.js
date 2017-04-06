@@ -55,6 +55,12 @@ class App extends React.Component{
     sendRoute(route){
         let xhr = new XMLHttpRequest();
         xhr.open("POST", "/start");
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                // Reload page when server has sucessfully accepted request
+                window.location.reload();
+            }
+        }
         xhr.send(JSON.stringify(route));
     }
 
