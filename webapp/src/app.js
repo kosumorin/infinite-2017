@@ -29,11 +29,12 @@ class App extends React.Component{
             "go!"
         ]
         
+        this.loadMapData                    = this.loadMapData.bind(this);
+        this.sendRoute                      = this.sendRoute.bind(this);
+        this.convertMapJSON                 = this.convertMapJSON.bind(this);
         this.onStationButtonClickHandler    = this.onStationButtonClickHandler.bind(this);
         this.onRouteClickHandler            = this.onRouteClickHandler.bind(this);
         this.goToNextStage                  = this.goToNextStage.bind(this);
-        this.loadMapData                    = this.loadMapData.bind(this);
-        this.convertMapJSON                 = this.convertMapJSON.bind(this);
     }
 
     componentWillMount(){
@@ -49,6 +50,12 @@ class App extends React.Component{
             }
         }
         xhr.send(null);
+    }
+
+    sendRoute(route){
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "/start");
+        xhr.send(JSON.stringify(route));
     }
 
     convertMapJSON(mapJSON){
@@ -138,6 +145,11 @@ class App extends React.Component{
                 return;
             }
         }
+        else if (currentStage === 3){
+            if (this.state.selectedRouteIndex == -1){
+                return;
+            }
+        }
 
         // Move on to next stage if all checks passed.
         if (currentStage < 3){
@@ -153,6 +165,12 @@ class App extends React.Component{
             let endStation = MapUtils.getStationById(this.state.endStationId, this.state.stations);
 
             this.setState({ routes: MapUtils.getPossibleRoutes(startStation, endStation, this.state.stations, this.state.lines)});
+        }
+
+        if (currentStage + 1 === 3){
+            let selectedRoute = this.state.routes[this.state.selectedRouteIndex];
+
+            this.sendRoute(selectedRoute);
         }
     }
 
