@@ -135,15 +135,19 @@ body{
 }
 
 /* Line tag */
-.stationTag .lineTag{
+.lineTag{
     display: inline;
+    color: #ffffff;  
+    margin: 0 3px;    
+    padding: 2px 5px;
 }
 
-.lineTag{
-    padding: 2px 5px;
+.station .lineTag{
     font-size: 12px;
-    color: #ffffff;
-    margin: 0 3px;
+}
+
+.route .lineTag{
+    font-size: 22px;
 }
 
 .lineTag.EWL{
