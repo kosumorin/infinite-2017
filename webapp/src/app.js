@@ -127,19 +127,14 @@ class App extends React.Component{
          */
         const currentStage = this.state.stage;
 
+        // Don't continue if stations are not selected.
         if (currentStage === 0){
-            let currentStartStationId = this.state.startStationId;
-
-            // Don't continue if no station selected.
-            if (currentStartStationId == -1){
+            if (this.state.startStationId == -1){
                 return;
             }
         }
         else if (currentStage === 1){
-            let currentEndStationId = this.state.endStationId;
-
-            // Don't continue if no station selected.
-            if (currentEndStationId == -1){
+            if (this.state.endStationId == -1){
                 return;
             }
         }
