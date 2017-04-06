@@ -134,7 +134,7 @@ class App extends React.Component{
          */
         const currentStage = this.state.stage;
 
-        // Don't continue if stations are not selected.
+        // Don't continue if stations or route are not selected.
         if (currentStage === 0){
             if (this.state.startStationId == -1){
                 return;
@@ -186,13 +186,13 @@ class App extends React.Component{
         return (
             <div className="container">
                 <div className="row">
-                    <div className="twelve columns">
-                        <h3>{this.guideMessage[this.state.stage]}</h3>
+                    <div className="centered twelve columns">
+                        <img id="logo" src="/webapp/static/assets/overflow-logo.png"></img>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="twelve columns">                    
-                        <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
+                    <div className="centered twelve columns">
+                        <h4 id="guide">{this.guideMessage[this.state.stage]}</h4>
                     </div>
                 </div>
                 <div className="row">
@@ -202,8 +202,12 @@ class App extends React.Component{
                         </div>
                     </div>
                 </div>
+                <div className="row">       
+                </div>
                 <div className="row">
-                    <button onClick={this.goToNextStage}>{this.buttonMessage[this.state.stage]}</button>
+                    <div className="centered columns">
+                        <button id="button" onClick={this.goToNextStage}>{this.buttonMessage[this.state.stage]}</button>                        
+                    </div>
                 </div>
             </div>
         );
