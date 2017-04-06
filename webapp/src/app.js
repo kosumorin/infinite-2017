@@ -175,6 +175,14 @@ class App extends React.Component{
     }
 
     render(){
+        let interactiveElement = null;
+        if (this.state.stage == 2){
+            interactiveElement = <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/>;
+        }
+        else{
+            interactiveElement = <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>;
+        }
+
         return (
             <div className="container">
                 <div className="row">
@@ -188,8 +196,10 @@ class App extends React.Component{
                     </div>
                 </div>
                 <div className="row">
-                    <div className="twelve columns">
-                        <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/>
+                    <div className="centered twelve columns">
+                        <div className="interactiveElement">
+                            {interactiveElement}            
+                        </div>
                     </div>
                 </div>
                 <div className="row">
