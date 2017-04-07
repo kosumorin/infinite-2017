@@ -174,7 +174,10 @@ class App extends React.Component{
         return (
             <ReactCSSTransitionGroup
                 transitionName="containerTrans"
-                transitionAppear={500}>
+                transitionAppear={true}
+                transitionEnter={false}
+                transitionLeave={false}
+                transitionAppearTimeout={500}>
                 <div className="container">
                     <div className="centered row">
                         <div className="wrapped columns">
