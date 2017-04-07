@@ -228,3 +228,13 @@ body{
     font-size: 14px;
     font-weight: 400;
 }
+
+/* Transitions */
+.containerTrans-appear {
+  opacity: 0.01;
+}
+
+.containerTrans-appear.containerTrans-appear-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Map from './map';
 import RoutePicker from './route';
 import { MessageGuide, ButtonGuide } from './guide';
@@ -171,44 +172,47 @@ class App extends React.Component{
 
     render(){
         return (
-            <div className="container">
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <img id="logo" src="/webapp/static/assets/overflow-logo.png"></img>
+            <ReactCSSTransitionGroup
+                transitionName="containerTrans"
+                transitionAppear={500}>
+                <div className="container">
+                    <div className="centered row">
+                        <div className="wrapped columns">
+                            <img id="logo" src="/webapp/static/assets/overflow-logo.png"></img>
+                        </div>
+                    </div>
+                    <div className="centered row">
+                        <div className="wrapped columns">
+                            <MessageGuide currentStage={this.state.stage} messages={["choose starting station", "choose destination station", " ", " "]}/>
+                        </div>
+                    </div>
+                    <div className="centered row">
+                        <div className="twelve columns">
+                            <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
+                        </div>
+                    </div>
+                    <div className="centered row">
+                        <div className="wrapped columns">
+                            <ButtonGuide currentStage={this.state.stage} messages={["next", "next", " ", " "]} visibleAtStage={[0, 1]} onClickHandler={this.goToNextStage}/>
+                        </div>
+                    </div>
+                    <div className="centered row">
+                        <div className="wrapped columns">
+                            <MessageGuide currentStage={this.state.stage} messages={[" ", " ", "pick a route", " "]}/>                         
+                        </div>
+                    </div>
+                    <div className="centered row">
+                        <div className="twelve columns">
+                            {this.state.stage == 2 ? <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/> : null}
+                        </div>
+                    </div>
+                    <div className="centered row">
+                        <div className="wrapped columns">
+                            <ButtonGuide currentStage={this.state.stage} messages={[" ", " ", "go!", " "]} visibleAtStage={[2]} onClickHandler={this.goToNextStage}/>
+                        </div>
                     </div>
                 </div>
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <MessageGuide currentStage={this.state.stage} messages={["choose starting station", "choose destination station", " ", " "]}/>
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="twelve columns">
-                        <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <ButtonGuide currentStage={this.state.stage} messages={["next", "next", " ", " "]} visibleAtStage={[0, 1]} onClickHandler={this.goToNextStage}/>
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <MessageGuide currentStage={this.state.stage} messages={[" ", " ", "pick a route", " "]}/>                         
-                    </div>
-                </div>
-                 <div className="centered row">
-                    <div className="twelve columns">
-                        {this.state.stage == 2 ? <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/> : null}
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <ButtonGuide currentStage={this.state.stage} messages={[" ", " ", "go!", " "]} visibleAtStage={[2]} onClickHandler={this.goToNextStage}/>
-                    </div>
-                </div>
-            </div>
-            
+            </ReactCSSTransitionGroup>            
         );
     }
 }
