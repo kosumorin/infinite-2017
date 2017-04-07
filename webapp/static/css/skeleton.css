@@ -59,8 +59,7 @@
   .columns:first-child {
     margin-left: 0; }
   
-  .centered.column, .centered.columns{
-    margin: 0;
+  .centered.row{
     display: flex;
     flex-direction: row;
     justify-content: center;
