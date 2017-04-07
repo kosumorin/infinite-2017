@@ -1,6 +1,7 @@
 import React from 'react';
 import Map from './map';
 import RoutePicker from './route';
+import { MessageGuide, ButtonGuide } from './guide';
 import { MapUtils } from './utils';
 
 class App extends React.Component{
@@ -17,18 +18,6 @@ class App extends React.Component{
             selectedRouteIndex: -1 
         };
 
-        this.guideMessage = [
-            "choose starting station",
-            "choose destination station",
-            "choose preferred route"
-        ];
-
-        this.buttonMessage = [
-            "next",
-            "next",
-            "go!"
-        ]
-        
         this.loadMapData                    = this.loadMapData.bind(this);
         this.sendRoute                      = this.sendRoute.bind(this);
         this.convertMapJSON                 = this.convertMapJSON.bind(this);
@@ -181,41 +170,45 @@ class App extends React.Component{
     }
 
     render(){
-        let interactiveElement = null;
-        if (this.state.stage == 2){
-            interactiveElement = <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/>;
-        }
-        else{
-            interactiveElement = <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>;
-        }
-
         return (
             <div className="container">
-                <div className="row">
-                    <div className="centered twelve columns">
+                <div className="centered row">
+                    <div className="wrapped columns">
                         <img id="logo" src="/webapp/static/assets/overflow-logo.png"></img>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="centered twelve columns">
-                        <h4 id="guide">{this.guideMessage[this.state.stage]}</h4>
+                <div className="centered row">
+                    <div className="wrapped columns">
+                        <MessageGuide currentStage={this.state.stage} messages={["choose starting station", "choose destination station", " ", " "]}/>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="centered twelve columns">
-                        <div className="interactiveElement">
-                            {interactiveElement}            
-                        </div>
+                <div className="centered row">
+                    <div className="twelve columns">
+                        <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
                     </div>
                 </div>
-                <div className="row">       
+                <div className="centered row">
+                    <div className="wrapped columns">
+                        <ButtonGuide currentStage={this.state.stage} messages={["next", "next", " ", " "]} visibleAtStage={[0, 1]} onClickHandler={this.goToNextStage}/>
+                    </div>
                 </div>
-                <div className="row">
-                    <div className="centered columns">
-                        <button id="button" onClick={this.goToNextStage}>{this.buttonMessage[this.state.stage]}</button>                        
+                <div className="centered row">
+                    <div className="wrapped columns">
+                        <MessageGuide currentStage={this.state.stage} messages={[" ", " ", "pick a route", " "]}/>                         
+                    </div>
+                </div>
+                 <div className="centered row">
+                    <div className="twelve columns">
+                        {this.state.stage == 2 ? <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/> : null}
+                    </div>
+                </div>
+                <div className="centered row">
+                    <div className="wrapped columns">
+                        <ButtonGuide currentStage={this.state.stage} messages={[" ", " ", "go!", " "]} visibleAtStage={[2]} onClickHandler={this.goToNextStage}/>
                     </div>
                 </div>
             </div>
+            
         );
     }
 }
