@@ -1,5 +1,5 @@
 {
-  "name": "infinite-2017-webapp",
+  "name": "ev3-sg-train-webapp",
   "version": "1.0.0",
   "babel": {
     "presets": ["env"],
