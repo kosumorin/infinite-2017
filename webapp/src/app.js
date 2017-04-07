@@ -206,7 +206,14 @@ class App extends React.Component{
                     </div>
                     <div className="centered row">
                         <div className="twelve columns">
-                            {this.state.stage == 2 ? <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/> : null}
+                            <ReactCSSTransitionGroup
+                                transitionName="routePickerTrans"
+                                transitionAppear={true}
+                                transitionEnter={false}
+                                transitionLeave={false}
+                                transitionAppearTimeout={500}>
+                                {this.state.stage == 2 ? <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/> : null}
+                            </ReactCSSTransitionGroup>
                         </div>
                     </div>
                     <div className="centered row">

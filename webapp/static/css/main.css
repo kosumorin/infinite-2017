@@ -239,11 +239,13 @@ body{
   transition: opacity 500ms ease-in;
 }
 
-.messageGuideTrans-enter {
+.messageGuideTrans-enter,
+.routePickerTrans-enter {
   opacity: 0.01;
 }
 
-.messageGuideTrans-enter.messageGuideTrans-enter-active {
+.messageGuideTrans-enter.messageGuideTrans-enter-active,
+.routePickerTrans-enter.routePickerTrans-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
