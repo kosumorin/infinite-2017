@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class MessageGuide extends React.Component{
     constructor(props){
@@ -16,11 +17,16 @@ class MessageGuide extends React.Component{
     render(){
         return (
             <div className="messageGuide">
-                {
-                    this.state.messages.map((message, index) => {
-                        return <h4 key={this.props.messages.indexOf(message)}>{message}</h4> 
-                    })
-                }
+                <ReactCSSTransitionGroup
+                    transitionName="messageGuideTrans"
+                    transitionLeave={false}
+                    transitionEnterTimeout={500}>
+                    {
+                        this.state.messages.map((message, index) => {
+                            return <h4 key={this.props.messages.indexOf(message)}>{message}</h4> 
+                        })
+                    }
+                </ReactCSSTransitionGroup>
             </div>
         );
     }

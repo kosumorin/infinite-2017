@@ -238,3 +238,21 @@ body{
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
+
+.messageGuideTrans-enter {
+  opacity: 0.01;
+}
+
+.messageGuideTrans-enter.messageGuideTrans-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.messageGuideTrans-leave {
+  opacity: 1;
+}
+
+.messageGuideTrans-leave.messageGuideTrans-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
