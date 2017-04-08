@@ -107,11 +107,11 @@ class App extends React.Component{
 
         // Choosing start station stage.
         if (this.state.stage === 0){
-            this.setState({ startStationId: stationId });
+            this.setState({ startStationId: stationId }, this.goToNextStage);
         }
         // Choosing end station stage.
         else if (this.state.stage === 1){
-            this.setState({ endStationId: stationId });            
+            this.setState({ endStationId: stationId }, this.goToNextStage);            
         }
     }
 
@@ -192,11 +192,6 @@ class App extends React.Component{
                     <div className="centered row">
                         <div className="twelve columns">
                             <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
-                        </div>
-                    </div>
-                    <div className="centered row">
-                        <div className="wrapped columns">
-                            <ButtonGuide currentStage={this.state.stage} messages={["next", "next", " ", " "]} visibleAtStage={[0, 1]} onClickHandler={this.goToNextStage}/>
                         </div>
                     </div>
                     <div className="centered row">
