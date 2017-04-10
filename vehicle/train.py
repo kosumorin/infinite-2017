@@ -1,5 +1,6 @@
 from vehicle.robot import Robot
 from vehicle.driver import Driver, DriverListener
+from vehicle.announcer import Announcer
 from railway.route import Route
 
 from enum import IntEnum
@@ -33,6 +34,7 @@ class Train(DriverListener):
 
         self.robot.add_listener(self.driver)
         self.driver.add_listener(self)
+        self.driver.add_listener(Announcer())
 
     def start(self, route: 'Route') -> bool:
         if self.state == self.State.STOPPED:
