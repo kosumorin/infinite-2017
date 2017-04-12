@@ -1,10 +1,11 @@
-from vehicle.robot import Robot
-from vehicle.driver import Driver, DriverListener
-from vehicle.announcer import Announcer
-from railway.route import Route
-
 from enum import IntEnum
 from threading import Thread
+
+from addons.announcer import Announcer
+from railway.route import Route
+from vehicle.driver import Driver, DriverListener
+from vehicle.robot import Robot
+
 
 class Train(DriverListener):
     class State(IntEnum):
