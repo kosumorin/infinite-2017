@@ -1,5 +1,7 @@
 # Infinite 2017
 
+## ***This project is discontinued.***
+
 This project uses the EV3 brick, motors and color sensors to move along the lines of Singapore's MRT railway system.
 
 This project features 3 railway lines known as the East West Line (EWL), North South Line (NSL) and Circle Line (CCL). They are also known as green line, red line and yellow line respectively.
@@ -20,7 +22,7 @@ The stations featured in this project are:
 
 Users will select the starting station of a line and the destination station of any line on the railway system. The logic is powered by Python running on the EV3 using ev3dev OS.
 
-The user interface for selecting the start point and end point is a website hosted locally on the EV3 brick that can be assessed by a computer connected to it via Wi-Fi. The web server hosted on the EV3 brick is powered by the [Flask microframework](http://flask.pocoo.org/) for Python.
+The user interface for selecting the start point and end point is a website hosted locally on the EV3 brick that can be assessed by a computer connected to it via Bluetooth. The web server hosted on the EV3 brick is powered by the [Flask microframework](http://flask.pocoo.org/) for Python.
 
 ## Installing
 
@@ -30,6 +32,7 @@ Access the EV3 through [SSH](http://www.ev3dev.org/docs/tutorials/connecting-to-
 
 Install ```git``` on the EV3:
 ```bash
+sudo apt-get update
 sudo apt-get install git
 ```
 
@@ -38,7 +41,19 @@ Clone this repository:
 git clone https://github.com/zzereen/infinite-2017.git
 ```
 
+Install ```python3-pip```:
+```bash
+sudo apt-get install python3-pip
+```
+
+Install ```Flask``` for Python 3:
+```bash
+sudo pip3 install 'flask'
+```
+
 ## Run the project
+
+The EV3 must be connected to a computer, preferrably through Bluetooth.
 
 On the computer connected to the EV3 via SSH (in the project directory):
 
