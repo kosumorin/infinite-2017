@@ -274,14 +274,14 @@ const MapUtils = {
 class StationInfo extends React.Component{
     render(){
         return (
-            <div className="stationInfo">
-                {
+            React.createElement("div", {className: "stationInfo"}, 
+                
                     this.props.lineNames.map((lineName, index) => {
-                        return <div key={index} className={"lineTag " + lineName}>{lineName}</div>
-                    })
-                }
-                <div className="stationTag">{this.props.stationName}</div>
-            </div>
+                        return React.createElement("div", {key: index, className: "lineTag " + lineName}, lineName)
+                    }), 
+                
+                React.createElement("div", {className: "stationTag"}, this.props.stationName)
+            )
         );
     }
 }
@@ -294,7 +294,7 @@ class StationButton extends React.Component{
             className += " selected";
         }
 
-        return <div className={className} data-stationId={this.props.stationId} onClick={this.props.onClickHandler}></div>;
+        return React.createElement("div", {className: className, "data-stationId": this.props.stationId, onClick: this.props.onClickHandler});
     }
 }
 
@@ -303,10 +303,10 @@ class Station extends React.Component{
         const uniqueId = this.props.station["name"].replace(/\s/g, "");
 
         return (
-            <div className="station" id={uniqueId}>
-                <StationInfo stationName={this.props.station["name"]} lineNames={this.props.lineNames}/>
-                <StationButton stationId={this.props.station["id"]} isSelected={this.props.isSelected} onClickHandler={this.props.onClickHandler} />
-            </div>
+            React.createElement("div", {className: "station", id: uniqueId}, 
+                React.createElement(StationInfo, {stationName: this.props.station["name"], lineNames: this.props.lineNames}), 
+                React.createElement(StationButton, {stationId: this.props.station["id"], isSelected: this.props.isSelected, onClickHandler: this.props.onClickHandler})
+            )
         );         
     }
 }
@@ -314,8 +314,8 @@ class Station extends React.Component{
 class Map extends React.Component{
     render(){
         return ( 
-            <div className="map">
-                {
+            React.createElement("div", {className: "map"}, 
+                
                     this.props.stations.map((station, index) => {
                         const lineNames = MapUtils.getLinesOfStation(station, this.props.lines).map((line) => {
                             return line["name"];
@@ -326,10 +326,10 @@ class Map extends React.Component{
                             isSelected = true;
                         }
 
-                        return <Station key={index} station={station} lineNames={lineNames} isSelected={isSelected} onClickHandler={this.props.onClickHandler}/>;
+                        return React.createElement(Station, {key: index, station: station, lineNames: lineNames, isSelected: isSelected, onClickHandler: this.props.onClickHandler});
                     })
-                }
-            </div>
+                
+            )
         );
     }
 }
@@ -346,11 +346,11 @@ class Route extends React.Component{
             let lineName = this.props.route["start_line"]["name"]; 
             
             element = (
-                <div className={className} data-routeIndex={this.props.routeIndex} onClick={this.props.onClickHandler}>
-                    <StationInfo stationName={startStationName} lineNames={[lineName]}/>
-                    <div className="arrow"></div>
-                    <StationInfo stationName={endStationName} lineNames={[lineName]}/>
-                </div> 
+                React.createElement("div", {className: className, "data-routeIndex": this.props.routeIndex, onClick: this.props.onClickHandler}, 
+                    React.createElement(StationInfo, {stationName: startStationName, lineNames: [lineName]}), 
+                    React.createElement("div", {className: "arrow"}), 
+                    React.createElement(StationInfo, {stationName: endStationName, lineNames: [lineName]})
+                ) 
             );
         }
         else{
@@ -362,13 +362,13 @@ class Route extends React.Component{
             let endLineName = this.props.route["end_line"]["name"];
 
             element = (
-                <div className={className} data-routeIndex={this.props.routeIndex} onClick={this.props.onClickHandler}>
-                    <StationInfo stationName={startStationName} lineNames={[startLineName]}/>
-                    <div className="arrow"></div>
-                    <StationInfo stationName={transferStationName} lineNames={[startLineName, endLineName]}/>
-                    <div className="arrow"></div>
-                    <StationInfo stationName={endStationName} lineNames={[endLineName]}/>
-                </div> 
+                React.createElement("div", {className: className, "data-routeIndex": this.props.routeIndex, onClick: this.props.onClickHandler}, 
+                    React.createElement(StationInfo, {stationName: startStationName, lineNames: [startLineName]}), 
+                    React.createElement("div", {className: "arrow"}), 
+                    React.createElement(StationInfo, {stationName: transferStationName, lineNames: [startLineName, endLineName]}), 
+                    React.createElement("div", {className: "arrow"}), 
+                    React.createElement(StationInfo, {stationName: endStationName, lineNames: [endLineName]})
+                ) 
             );
         }
 
@@ -379,18 +379,18 @@ class Route extends React.Component{
 class RoutePicker extends React.Component{
     render(){
         return (
-            <div className="routePicker">
-                {
+            React.createElement("div", {className: "routePicker"}, 
+                
                     this.props.routes.map((route, index) => {
                         let isSelected = false;
                         if (index == this.props.selectedRouteIndex){
                             isSelected = true;
                         }
 
-                        return <Route key={index} routeIndex={index} route={route} isSelected={isSelected} onClickHandler={this.props.onClickHandler}/>;
+                        return React.createElement(Route, {key: index, routeIndex: index, route: route, isSelected: isSelected, onClickHandler: this.props.onClickHandler});
                     })
-                }
-            </div>
+                
+            )
         );
     }
 }
@@ -410,13 +410,13 @@ class MessageGuide extends React.Component{
 
     render(){
         return (
-            <div className="messageGuide">
-                {
+            React.createElement("div", {className: "messageGuide"}, 
+                
                     this.state.messages.map((message, index) => {
-                        return <h4 key={this.props.messages.indexOf(message)}>{message}</h4> 
+                        return React.createElement("h4", {key: this.props.messages.indexOf(message)}, message) 
                     })
-                }
-            </div>
+                
+            )
         );
     }
 }
@@ -427,7 +427,7 @@ class ButtonGuide extends React.Component{
             return null;    
         }
         else{
-            return <button id="button" onClick={this.props.onClickHandler}>{this.props.messages[this.props.currentStage]}</button> 
+            return React.createElement("button", {id: "button", onClick: this.props.onClickHandler}, this.props.messages[this.props.currentStage]) 
         }
     }
 }
@@ -599,40 +599,40 @@ class App extends React.Component{
 
     render(){
         return (
-            <div className="container">
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <img id="logo" src="/webapp/static/assets/overflow-logo.png"></img>
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <MessageGuide currentStage={this.state.stage} messages={["choose starting station", "choose destination station", " ", " "]}/>
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="twelve columns">
-                        <Map stations={this.state.stations} lines={this.state.lines} onClickHandler={this.onStationButtonClickHandler} startStationId={this.state.startStationId} endStationId={this.state.endStationId}/>
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <MessageGuide currentStage={this.state.stage} messages={[" ", " ", "pick a route", " "]}/>                         
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="twelve columns">
-                        {this.state.stage == 2 ? <RoutePicker routes={this.state.routes} onClickHandler={this.onRouteClickHandler} selectedRouteIndex={this.state.selectedRouteIndex}/> : null}
-                    </div>
-                </div>
-                <div className="centered row">
-                    <div className="wrapped columns">
-                        <ButtonGuide currentStage={this.state.stage} messages={[" ", " ", "go!", " "]} visibleAtStage={[2]} onClickHandler={this.goToNextStage}/>
-                    </div>
-                </div>
-            </div>         
+            React.createElement("div", {className: "container"}, 
+                React.createElement("div", {className: "centered row"}, 
+                    React.createElement("div", {className: "wrapped columns"}, 
+                        React.createElement("img", {id: "logo", src: "/webapp/static/assets/overflow-logo.png"})
+                    )
+                ), 
+                React.createElement("div", {className: "centered row"}, 
+                    React.createElement("div", {className: "wrapped columns"}, 
+                        React.createElement(MessageGuide, {currentStage: this.state.stage, messages: ["choose starting station", "choose destination station", " ", " "]})
+                    )
+                ), 
+                React.createElement("div", {className: "centered row"}, 
+                    React.createElement("div", {className: "twelve columns"}, 
+                        React.createElement(Map, {stations: this.state.stations, lines: this.state.lines, onClickHandler: this.onStationButtonClickHandler, startStationId: this.state.startStationId, endStationId: this.state.endStationId})
+                    )
+                ), 
+                React.createElement("div", {className: "centered row"}, 
+                    React.createElement("div", {className: "wrapped columns"}, 
+                        React.createElement(MessageGuide, {currentStage: this.state.stage, messages: [" ", " ", "pick a route", " "]})
+                    )
+                ), 
+                React.createElement("div", {className: "centered row"}, 
+                    React.createElement("div", {className: "twelve columns"}, 
+                        this.state.stage == 2 ? React.createElement(RoutePicker, {routes: this.state.routes, onClickHandler: this.onRouteClickHandler, selectedRouteIndex: this.state.selectedRouteIndex}) : null
+                    )
+                ), 
+                React.createElement("div", {className: "centered row"}, 
+                    React.createElement("div", {className: "wrapped columns"}, 
+                        React.createElement(ButtonGuide, {currentStage: this.state.stage, messages: [" ", " ", "go!", " "], visibleAtStage: [2], onClickHandler: this.goToNextStage})
+                    )
+                )
+            )         
         );
     }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(React.createElement(App, null), document.getElementById("app"));

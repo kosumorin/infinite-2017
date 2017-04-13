@@ -6,6 +6,3 @@ __pycache__
 
 # NPM
 webapp/node_modules
-
-# Webpack output
-bundle.js
