@@ -1,6 +1,4 @@
-# Infinite 2017
-
-## ***This project is discontinued.***
+# MRT EV3
 
 This project uses the EV3 brick, motors and color sensors to move along the lines of Singapore's MRT railway system.
 
@@ -23,6 +21,8 @@ The stations featured in this project are:
 Users will select the starting station of a line and the destination station of any line on the railway system. The logic is powered by Python running on the EV3 using ev3dev OS.
 
 The user interface for selecting the start point and end point is a website hosted locally on the EV3 brick that can be assessed by a computer connected to it via Bluetooth. The web server hosted on the EV3 brick is powered by the [Flask microframework](http://flask.pocoo.org/) for Python.
+
+![Demo](https://user-images.githubusercontent.com/70547991/209463162-f535e599-1431-4983-9c27-c40236994373.png)
 
 ## Installing
 
